@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "clinical-bone";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: #F6F5F0;
+  --color-base-200: #FFFFFF;
+  --color-base-300: #D5D3CA;
+  --color-base-content: #0E1012;
+  --color-primary: #0E1012;
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #57534E;
+  --color-secondary-content: #FFFFFF;
+  --color-accent: #00B341;
+  --color-accent-content: #FFFFFF;
+  --color-neutral: #1C1917;
+  --color-neutral-content: #F6F5F0;
+  --color-info: #0284C7;
+  --color-info-content: #FFFFFF;
+  --color-success: #00B341;
+  --color-success-content: #FFFFFF;
+  --color-warning: #D97706;
+  --color-warning-content: #FFFFFF;
+  --color-error: #FF4A5A;
+  --color-error-content: #FFFFFF;
+  --radius-selector: 2px;
+  --radius-field: 4px;
+  --radius-box: 4px;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "or-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: #0E1012;
+  --color-base-200: #16181D;
+  --color-base-300: #2A2D35;
+  --color-base-content: #F6F5F0;
+  --color-primary: #F6F5F0;
+  --color-primary-content: #0E1012;
+  --color-secondary: #9CA3AF;
+  --color-secondary-content: #0E1012;
+  --color-accent: #10B981;
+  --color-accent-content: #0E1012;
+  --color-neutral: #22252C;
+  --color-neutral-content: #F6F5F0;
+  --color-info: #38BDF8;
+  --color-info-content: #0E1012;
+  --color-success: #10B981;
+  --color-success-content: #0E1012;
+  --color-warning: #F59E0B;
+  --color-warning-content: #0E1012;
+  --color-error: #FF4A5A;
+  --color-error-content: #FFFFFF;
+  --radius-selector: 2px;
+  --radius-field: 4px;
+  --radius-box: 4px;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Oswald", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.hard-offset {
+  box-shadow: 2px 2px 0px var(--color-base-content);
+}
+
+.hard-offset-sm {
+  box-shadow: 1.5px 1.5px 0px var(--color-base-content);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
