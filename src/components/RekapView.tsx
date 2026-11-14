@@ -77,13 +77,13 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
   }, [filteredPatients, hospitalMap])
 
   return (
-    <div className="flex flex-col gap-4 pb-24">
-      <div className="flex items-center justify-between">
-        <span className="font-mono text-[11px] font-medium tracking-wider text-secondary uppercase">
-          // REKAP & LOGBOOK PRESISI
+    <div className="flex flex-col gap-3.5 pb-24">
+      <div className="flex items-center justify-between px-1">
+        <span className="text-xs font-bold tracking-wide text-secondary uppercase">
+          Rekap & Logbook
         </span>
-        <span className="font-mono text-[11px] text-secondary">
-          {filteredPatients.length} PASIEN
+        <span className="rounded-full bg-base-200 px-2.5 py-0.5 font-mono text-[11px] font-bold text-base-content shadow-xs">
+          {filteredPatients.length} Pasien
         </span>
       </div>
 
@@ -93,7 +93,7 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
           aria-label="Filter Rumah Sakit"
           value={selectedHospitalId}
           onChange={(e) => setSelectedHospitalId(e.target.value)}
-          className="select select-sm h-10 w-full border-base-content bg-base-200 font-medium"
+          className="select select-sm h-10 w-full rounded-xl border-base-300 bg-base-200 font-semibold shadow-xs"
         >
           <option value="all">Semua RS</option>
           {hospitals.map((h) => (
@@ -107,7 +107,7 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
           aria-label="Filter Bulan"
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
-          className="select select-sm h-10 w-full border-base-content bg-base-200 font-mono text-xs"
+          className="select select-sm h-10 w-full rounded-xl border-base-300 bg-base-200 text-xs font-semibold shadow-xs"
         >
           {availableMonths.map((ym) => (
             <option key={ym} value={ym}>
@@ -118,21 +118,19 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
         </select>
       </div>
 
-      {/* Monthly Breakdown Strip */}
-      <section className="border border-base-content bg-base-200 p-3">
-        <div className="flex items-baseline justify-between border-b border-base-300 pb-2">
-          <span className="font-mono text-[11px] font-bold text-secondary uppercase">
-            TOTAL PERIODE INI
-          </span>
-          <span className="font-display text-3xl font-bold leading-none tabular-nums">
+      {/* Monthly Breakdown Card */}
+      <section className="oneui-card border border-base-300/60 bg-base-200 p-4">
+        <div className="flex items-baseline justify-between border-b border-base-300 pb-2.5">
+          <span className="text-xs font-semibold text-secondary">Total Periode Ini</span>
+          <span className="text-3xl font-extrabold leading-none text-primary tabular-nums">
             {filteredPatients.length}
           </span>
         </div>
-        <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs">
+        <div className="mt-2.5 flex flex-wrap gap-x-4 gap-y-1 text-xs">
           {hospitals.map((h) => (
             <div key={h.id} className="flex items-center gap-1.5">
               <span className="text-secondary">{h.shortName || h.name}:</span>
-              <span className="font-bold text-base-content tabular-nums">
+              <span className="font-mono font-bold text-base-content tabular-nums">
                 {hospitalBreakdown.get(h.id) ?? 0}
               </span>
             </div>
@@ -142,8 +140,8 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
 
       {/* Daily Grouped List */}
       {dailyGroups.length === 0 ? (
-        <div className="border border-dashed border-base-content/40 bg-base-200 p-6 text-center">
-          <p className="text-sm font-semibold text-base-content">
+        <div className="oneui-card border border-base-300/60 bg-base-200 p-6 text-center">
+          <p className="text-sm font-bold text-base-content">
             Belum ada data pasien pada filter ini.
           </p>
           <p className="mt-1 text-xs text-secondary">
@@ -152,18 +150,21 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
           </p>
         </div>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2.5">
           {dailyGroups.map((group) => {
             const isExpanded = expandedKey === group.key
             return (
-              <div key={group.key} className="border border-base-content bg-base-200">
+              <div
+                key={group.key}
+                className="oneui-card overflow-hidden border border-base-300/60 bg-base-200"
+              >
                 <button
                   type="button"
                   onClick={() => setExpandedKey(isExpanded ? null : group.key)}
-                  className="flex w-full items-center justify-between gap-2 p-3 text-left"
+                  className="flex w-full items-center justify-between gap-2 p-3.5 text-left"
                 >
                   <div className="min-w-0 flex-1">
-                    <div className="font-mono text-xs font-bold text-base-content">
+                    <div className="text-xs font-bold text-base-content">
                       {formatDateFull(group.date)}
                     </div>
                     <div className="mt-0.5 truncate text-xs font-medium text-secondary">
@@ -172,11 +173,11 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
                   </div>
                   <div className="flex shrink-0 items-center gap-2">
                     {group.pendingCount > 0 && (
-                      <span className="badge badge-xs rounded-[2px] border-error bg-error font-mono text-[10px] font-bold text-error-content">
-                        {group.pendingCount} BELUM EMR
+                      <span className="rounded-full bg-error/12 px-2 py-0.5 text-[10px] font-bold text-error">
+                        {group.pendingCount} Belum EMR
                       </span>
                     )}
-                    <span className="border border-base-content bg-base-100 px-2 py-0.5 font-mono text-xs font-bold tabular-nums">
+                    <span className="rounded-full bg-base-100 px-2.5 py-1 font-mono text-xs font-bold tabular-nums">
                       {group.items.length} Pasien
                     </span>
                     {isExpanded ? (
@@ -188,27 +189,29 @@ export function RekapView({ hospitals, patients, onOpenPatient }: RekapViewProps
                 </button>
 
                 {isExpanded && (
-                  <div className="border-t border-base-300 bg-base-100/60">
+                  <div className="border-t border-base-300 bg-base-100/50">
                     {group.items.map((p) => (
                       <button
                         key={p.id}
                         type="button"
                         onClick={() => onOpenPatient(p)}
-                        className="flex w-full items-center justify-between gap-2 border-b border-base-300 px-3 py-2.5 text-left last:border-b-0 hover:bg-base-200"
+                        className="flex w-full items-center justify-between gap-2 border-b border-base-300/70 px-4 py-3 text-left last:border-b-0 hover:bg-base-200"
                       >
                         <div className="min-w-0 flex-1">
-                          <div className="truncate text-sm font-semibold">{p.fullName}</div>
+                          <div className="truncate text-sm font-bold">{p.fullName}</div>
                           <div className="truncate font-mono text-[11px] text-secondary">
                             RM: {p.rmNumber || '-'} • ASA {p.asaClass}
                             {p.isEmergency ? 'E' : ''} • {p.anesthesiaPlan}
                           </div>
                         </div>
                         <span
-                          className={`font-mono text-[10px] font-bold uppercase ${
-                            p.emrStatus === 'done' ? 'text-success' : 'text-error'
+                          className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
+                            p.emrStatus === 'done'
+                              ? 'bg-success/12 text-success'
+                              : 'bg-error/12 text-error'
                           }`}
                         >
-                          {p.emrStatus === 'done' ? 'EMR OK' : 'BELUM EMR'}
+                          {p.emrStatus === 'done' ? 'EMR OK' : 'Belum EMR'}
                         </span>
                       </button>
                     ))}

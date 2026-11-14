@@ -34,7 +34,7 @@ export function App() {
     document.documentElement.setAttribute('data-theme', store.theme)
     const metaTheme = document.querySelector('meta[name="theme-color"]')
     if (metaTheme) {
-      metaTheme.setAttribute('content', store.theme === 'or-dark' ? '#0E1012' : '#F6F5F0')
+      metaTheme.setAttribute('content', store.theme === 'or-dark' ? '#000000' : '#F2F4F7')
     }
   }, [store.theme])
 
@@ -145,12 +145,12 @@ export function App() {
   return (
     <div className="min-h-dvh bg-base-100 text-base-content">
       {/* Top App Header */}
-      <header className="sticky top-0 z-30 border-b border-base-content bg-base-200">
-        <div className="mx-auto flex max-w-lg items-center justify-between px-4 py-2.5">
-          <div className="flex items-baseline gap-2">
-            <h1 className="font-display text-xl font-bold tracking-tight uppercase">ANESLOG</h1>
-            <span className="font-mono text-[10px] font-medium text-secondary uppercase">
-              PRE-OP // EMR
+      <header className="sticky top-0 z-30 border-b border-base-300/80 bg-base-200/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-lg items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl font-extrabold tracking-tight text-base-content">AnesLog</h1>
+            <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold tracking-wide text-primary uppercase">
+              Pre-Op
             </span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -158,8 +158,8 @@ export function App() {
               type="button"
               onClick={handleToggleTheme}
               aria-label="Ganti mode terang/gelap"
-              className="btn btn-sm btn-ghost h-9 w-9 border border-base-300 p-0"
-              title={store.theme === 'clinical-bone' ? 'Mode OR Gelap' : 'Mode Kertas Terang'}
+              className="btn btn-sm btn-ghost h-9 w-9 rounded-full bg-base-100 p-0 hover:bg-base-300"
+              title={store.theme === 'clinical-bone' ? 'Mode OR Gelap' : 'Mode One UI Terang'}
             >
               {store.theme === 'clinical-bone' ? (
                 <Moon className="h-4 w-4" />
@@ -171,7 +171,7 @@ export function App() {
               type="button"
               onClick={() => setSettingsOpen(true)}
               aria-label="Pengaturan RS dan Backup"
-              className="btn btn-sm btn-ghost h-9 w-9 border border-base-300 p-0"
+              className="btn btn-sm btn-ghost h-9 w-9 rounded-full bg-base-100 p-0 hover:bg-base-300"
               title="Kelola RS & Backup"
             >
               <Settings className="h-4 w-4" />
@@ -204,19 +204,19 @@ export function App() {
         )}
       </main>
 
-      {/* Bottom 2-Tab Navigation */}
+      {/* Bottom 2-Tab Navigation (One UI Tactile) */}
       <nav
         aria-label="Navigasi Utama"
-        className="fixed right-0 bottom-0 left-0 z-30 border-t border-base-content bg-base-200"
+        className="fixed right-0 bottom-0 left-0 z-30 border-t border-base-300/80 bg-base-200/95 backdrop-blur-md"
       >
-        <div className="mx-auto grid max-w-lg grid-cols-2">
+        <div className="mx-auto grid max-w-lg grid-cols-2 gap-2 px-4 py-2">
           <button
             type="button"
             onClick={() => setActiveTab('today')}
-            className={`flex h-14 items-center justify-center gap-2 border-r border-base-300 font-mono text-xs font-bold tracking-wider uppercase ${
+            className={`flex h-11 items-center justify-center gap-2 rounded-full text-xs font-bold transition-colors ${
               activeTab === 'today'
-                ? 'bg-primary text-primary-content'
-                : 'bg-base-200 text-secondary hover:text-base-content'
+                ? 'bg-primary/12 text-primary'
+                : 'text-secondary hover:bg-base-100 hover:text-base-content'
             }`}
           >
             <ClipboardList className="h-4 w-4" />
@@ -225,10 +225,10 @@ export function App() {
           <button
             type="button"
             onClick={() => setActiveTab('rekap')}
-            className={`flex h-14 items-center justify-center gap-2 font-mono text-xs font-bold tracking-wider uppercase ${
+            className={`flex h-11 items-center justify-center gap-2 rounded-full text-xs font-bold transition-colors ${
               activeTab === 'rekap'
-                ? 'bg-primary text-primary-content'
-                : 'bg-base-200 text-secondary hover:text-base-content'
+                ? 'bg-primary/12 text-primary'
+                : 'text-secondary hover:bg-base-100 hover:text-base-content'
             }`}
           >
             <BarChart3 className="h-4 w-4" />

@@ -99,10 +99,10 @@ export function PatientFormModal({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-base-100">
       {/* Header */}
-      <header className="flex shrink-0 items-center justify-between border-b border-base-content bg-base-200 px-4 py-3">
+      <header className="flex shrink-0 items-center justify-between border-b border-base-300 bg-base-200 px-4 py-3">
         <div>
-          <span className="font-mono text-[10px] font-bold tracking-wider text-secondary uppercase">
-            // PRE-OP ASA COMPACT
+          <span className="text-[10px] font-bold tracking-wider text-primary uppercase">
+            Pre-Op ASA Compact
           </span>
           <h2 className="text-base font-bold text-base-content">
             {initialPatient ? 'Edit Data Pasien' : 'Catat Pasien Baru'}
@@ -112,7 +112,7 @@ export function PatientFormModal({
           type="button"
           onClick={onClose}
           aria-label="Tutup form"
-          className="btn btn-sm btn-ghost h-10 w-10 border border-base-300 p-0"
+          className="btn btn-sm btn-ghost h-10 w-10 rounded-full bg-base-100 p-0"
         >
           <X className="h-5 w-5" />
         </button>
@@ -120,17 +120,15 @@ export function PatientFormModal({
 
       {/* Scrollable Form */}
       <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto px-4 py-4 pb-28">
-        <div className="mx-auto flex max-w-lg flex-col gap-4">
+        <div className="mx-auto flex max-w-lg flex-col gap-3.5">
           {/* RS & Tanggal */}
-          <div className="grid grid-cols-2 gap-2 border border-base-300 bg-base-200 p-3">
+          <div className="oneui-card grid grid-cols-2 gap-2.5 border border-base-300/60 bg-base-200 p-3.5">
             <label className="flex flex-col gap-1">
-              <span className="font-mono text-[10px] font-bold text-secondary uppercase">
-                Rumah Sakit
-              </span>
+              <span className="text-[11px] font-bold text-secondary">Rumah Sakit</span>
               <select
                 value={hospitalId}
                 onChange={(e) => setHospitalId(e.target.value)}
-                className="select select-sm h-10 w-full border-base-300 bg-base-100 font-medium"
+                className="select select-sm h-10 w-full rounded-xl border-base-300 bg-base-100 font-semibold"
               >
                 {hospitals.map((h) => (
                   <option key={h.id} value={h.id}>
@@ -140,22 +138,20 @@ export function PatientFormModal({
               </select>
             </label>
             <label className="flex flex-col gap-1">
-              <span className="font-mono text-[10px] font-bold text-secondary uppercase">
-                Tanggal
-              </span>
+              <span className="text-[11px] font-bold text-secondary">Tanggal</span>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="input input-sm h-10 w-full border-base-300 bg-base-100 font-mono text-xs"
+                className="input input-sm h-10 w-full rounded-xl border-base-300 bg-base-100 font-mono text-xs"
               />
             </label>
           </div>
 
           {/* Identitas */}
-          <div className="flex flex-col gap-3 border border-base-300 bg-base-200 p-3">
-            <span className="font-mono text-[10px] font-bold tracking-wider text-secondary uppercase">
-              01 // IDENTITAS & ANTROPOMETRI
+          <div className="oneui-card flex flex-col gap-3 border border-base-300/60 bg-base-200 p-4">
+            <span className="text-[11px] font-bold tracking-wide text-primary uppercase">
+              Identitas & Antropometri
             </span>
             <label className="flex flex-col gap-1">
               <span className="text-xs font-semibold">
@@ -169,13 +165,13 @@ export function PatientFormModal({
                   setFullName(e.target.value)
                   if (nameError) setNameError(false)
                 }}
-                className={`input h-11 w-full bg-base-100 text-base ${
+                className={`input h-11 w-full rounded-xl bg-base-100 text-base ${
                   nameError ? 'border-error focus:border-error' : 'border-base-300'
                 }`}
                 autoFocus
               />
               {nameError && (
-                <span className="font-mono text-[11px] text-error">
+                <span className="text-[11px] font-semibold text-error">
                   Nama/inisial pasien wajib diisi.
                 </span>
               )}
@@ -190,7 +186,7 @@ export function PatientFormModal({
                   placeholder="123456"
                   value={rmNumber}
                   onChange={(e) => setRmNumber(e.target.value)}
-                  className="input h-10 w-full border-base-300 bg-base-100 font-mono text-sm"
+                  className="input h-10 w-full rounded-xl border-base-300 bg-base-100 font-mono text-sm"
                 />
               </label>
               <label className="flex flex-col gap-1">
@@ -201,7 +197,7 @@ export function PatientFormModal({
                   placeholder="45"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  className="input h-10 w-full border-base-300 bg-base-100 font-mono text-sm"
+                  className="input h-10 w-full rounded-xl border-base-300 bg-base-100 font-mono text-sm"
                 />
               </label>
               <label className="flex flex-col gap-1">
@@ -212,16 +208,16 @@ export function PatientFormModal({
                   placeholder="65"
                   value={weightKg}
                   onChange={(e) => setWeightKg(e.target.value)}
-                  className="input h-10 w-full border-base-300 bg-base-100 font-mono text-sm"
+                  className="input h-10 w-full rounded-xl border-base-300 bg-base-100 font-mono text-sm"
                 />
               </label>
             </div>
           </div>
 
           {/* Diagnosis & Rencana */}
-          <div className="flex flex-col gap-3 border border-base-300 bg-base-200 p-3">
-            <span className="font-mono text-[10px] font-bold tracking-wider text-secondary uppercase">
-              02 // DIAGNOSIS, TINDAKAN & ANESTESI
+          <div className="oneui-card flex flex-col gap-3 border border-base-300/60 bg-base-200 p-4">
+            <span className="text-[11px] font-bold tracking-wide text-primary uppercase">
+              Diagnosis & Rencana Anestesi
             </span>
             <label className="flex flex-col gap-1">
               <span className="text-xs font-semibold">Diagnosis & Rencana Operasi</span>
@@ -230,7 +226,7 @@ export function PatientFormModal({
                 placeholder="Contoh: Kolelitiasis • Lap. Kolesistektomi"
                 value={diagnosisProcedure}
                 onChange={(e) => setDiagnosisProcedure(e.target.value)}
-                className="input h-11 w-full border-base-300 bg-base-100 text-sm"
+                className="input h-11 w-full rounded-xl border-base-300 bg-base-100 text-sm"
               />
             </label>
 
@@ -242,10 +238,10 @@ export function PatientFormModal({
                     key={plan}
                     type="button"
                     onClick={() => setAnesthesiaPlan(plan)}
-                    className={`btn btn-sm h-9 border font-mono text-xs ${
+                    className={`btn btn-sm h-9 rounded-full border-0 px-3.5 text-xs font-bold ${
                       anesthesiaPlan === plan
-                        ? 'border-base-content bg-primary text-primary-content'
-                        : 'border-base-300 bg-base-100 text-base-content'
+                        ? 'bg-primary text-primary-content'
+                        : 'bg-base-100 text-base-content'
                     }`}
                   >
                     {plan}
@@ -256,14 +252,14 @@ export function PatientFormModal({
           </div>
 
           {/* Riwayat Penyakit & Alergi */}
-          <div className="flex flex-col gap-3 border border-base-300 bg-base-200 p-3">
-            <span className="font-mono text-[10px] font-bold tracking-wider text-secondary uppercase">
-              03 // ANAMNESIS, RIWAYAT PENYAKIT & ALERGI
+          <div className="oneui-card flex flex-col gap-3 border border-base-300/60 bg-base-200 p-4">
+            <span className="text-[11px] font-bold tracking-wide text-primary uppercase">
+              Anamnesis, Riwayat & Alergi
             </span>
 
             <div>
               <span className="mb-1.5 block text-xs font-semibold">
-                Riwayat Penyakit / Komorbid (Tap cepat)
+                Riwayat Penyakit / Komorbid
               </span>
               <div className="flex flex-wrap gap-1.5">
                 {COMORBIDITY_OPTIONS.map((item) => {
@@ -273,10 +269,10 @@ export function PatientFormModal({
                       key={item}
                       type="button"
                       onClick={() => toggleComorbidity(item)}
-                      className={`btn btn-sm h-9 border text-xs ${
+                      className={`btn btn-sm h-9 rounded-full border-0 px-3.5 text-xs font-semibold ${
                         selected
-                          ? 'border-base-content bg-primary text-primary-content'
-                          : 'border-base-300 bg-base-100 text-base-content'
+                          ? 'bg-primary text-primary-content'
+                          : 'bg-base-100 text-base-content'
                       }`}
                     >
                       {item}
@@ -289,31 +285,31 @@ export function PatientFormModal({
                 placeholder="Riwayat lain / operasi sebelumnya (opsional)"
                 value={otherComorbidity}
                 onChange={(e) => setOtherComorbidity(e.target.value)}
-                className="input input-sm mt-2 h-10 w-full border-base-300 bg-base-100 text-xs"
+                className="input input-sm mt-2.5 h-10 w-full rounded-xl border-base-300 bg-base-100 text-xs"
               />
             </div>
 
-            <div className="border-t border-base-300 pt-2.5">
+            <div className="border-t border-base-300 pt-3">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-semibold">Alergi Obat / Makanan</span>
-                <div className="join border border-base-300">
+                <div className="flex gap-1 rounded-full bg-base-100 p-1">
                   <button
                     type="button"
                     onClick={() => setHasAllergy(false)}
-                    className={`btn btn-xs join-item h-8 px-3 font-mono ${
-                      !hasAllergy ? 'bg-primary text-primary-content' : 'bg-base-100'
+                    className={`rounded-full px-3 py-1 text-[11px] font-bold ${
+                      !hasAllergy ? 'bg-base-200 text-base-content shadow-xs' : 'text-secondary'
                     }`}
                   >
-                    TIDAK ADA
+                    Tidak Ada
                   </button>
                   <button
                     type="button"
                     onClick={() => setHasAllergy(true)}
-                    className={`btn btn-xs join-item h-8 px-3 font-mono ${
-                      hasAllergy ? 'bg-error text-error-content' : 'bg-base-100'
+                    className={`rounded-full px-3 py-1 text-[11px] font-bold ${
+                      hasAllergy ? 'bg-error text-error-content shadow-xs' : 'text-secondary'
                     }`}
                   >
-                    ADA ALERGI
+                    Ada Alergi
                   </button>
                 </div>
               </div>
@@ -323,7 +319,7 @@ export function PatientFormModal({
                   placeholder="Sebutkan alergen (mis: Penisilin, NSAID, Lateks)"
                   value={allergyNote}
                   onChange={(e) => setAllergyNote(e.target.value)}
-                  className="input mt-2 h-10 w-full border-error bg-error/5 text-sm"
+                  className="input mt-2 h-10 w-full rounded-xl border-error bg-error/5 text-sm"
                 />
               )}
             </div>
@@ -335,15 +331,15 @@ export function PatientFormModal({
                 placeholder="Contoh: Amlodipine 10mg, Metformin, Clopidogrel"
                 value={medications}
                 onChange={(e) => setMedications(e.target.value)}
-                className="input input-sm h-10 w-full border-base-300 bg-base-100 text-xs"
+                className="input input-sm h-10 w-full rounded-xl border-base-300 bg-base-100 text-xs"
               />
             </label>
           </div>
 
           {/* Standar Pre-Op ASA */}
-          <div className="flex flex-col gap-3 border border-base-300 bg-base-200 p-3">
-            <span className="font-mono text-[10px] font-bold tracking-wider text-secondary uppercase">
-              04 // STATUS FISIK ASA, AIRWAY & PUASA
+          <div className="oneui-card flex flex-col gap-3 border border-base-300/60 bg-base-200 p-4">
+            <span className="text-[11px] font-bold tracking-wide text-primary uppercase">
+              Status Fisik ASA, Airway & Puasa
             </span>
 
             <div>
@@ -354,9 +350,9 @@ export function PatientFormModal({
                     type="checkbox"
                     checked={isEmergency}
                     onChange={(e) => setIsEmergency(e.target.checked)}
-                    className="checkbox checkbox-xs checkbox-error rounded-[2px]"
+                    className="checkbox checkbox-xs checkbox-error rounded"
                   />
-                  <span className="font-mono text-xs font-bold text-error">+ E (Emergensi)</span>
+                  <span className="text-xs font-bold text-error">+ E (Emergensi)</span>
                 </label>
               </div>
               <div className="grid grid-cols-5 gap-1.5">
@@ -365,12 +361,12 @@ export function PatientFormModal({
                     key={asa}
                     type="button"
                     onClick={() => setAsaClass(asa)}
-                    className={`btn h-10 border font-mono text-sm font-bold ${
+                    className={`btn h-10 rounded-full border-0 font-mono text-sm font-bold ${
                       asaClass === asa
                         ? asa === 'III' || asa === 'IV' || asa === 'V'
-                          ? 'border-error bg-error text-error-content'
-                          : 'border-base-content bg-primary text-primary-content'
-                        : 'border-base-300 bg-base-100 text-base-content'
+                          ? 'bg-error text-error-content'
+                          : 'bg-primary text-primary-content'
+                        : 'bg-base-100 text-base-content'
                     }`}
                   >
                     {asa}
@@ -388,10 +384,10 @@ export function PatientFormModal({
                       key={m}
                       type="button"
                       onClick={() => setMallampati(m)}
-                      className={`btn btn-sm h-10 border font-mono text-xs font-bold ${
+                      className={`btn btn-sm h-10 rounded-full border-0 font-mono text-xs font-bold ${
                         mallampati === m
-                          ? 'border-base-content bg-primary text-primary-content'
-                          : 'border-base-300 bg-base-100 text-base-content'
+                          ? 'bg-primary text-primary-content'
+                          : 'bg-base-100 text-base-content'
                       }`}
                     >
                       {m}
@@ -407,7 +403,7 @@ export function PatientFormModal({
                   placeholder="Contoh: 6 jam / 02.00"
                   value={npoHours}
                   onChange={(e) => setNpoHours(e.target.value)}
-                  className="input h-10 w-full border-base-300 bg-base-100 font-mono text-xs"
+                  className="input h-10 w-full rounded-xl border-base-300 bg-base-100 font-mono text-xs"
                 />
               </label>
             </div>
@@ -419,7 +415,7 @@ export function PatientFormModal({
                 placeholder="Hb 12.4, TD 130/80, gigi goyang, dll."
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
-                className="textarea w-full border-base-300 bg-base-100 text-sm"
+                className="textarea w-full rounded-xl border-base-300 bg-base-100 text-sm"
               />
             </label>
           </div>
@@ -427,14 +423,14 @@ export function PatientFormModal({
       </form>
 
       {/* Sticky Submit Footer */}
-      <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-base-content bg-base-200 px-4 py-3">
+      <footer className="fixed right-0 bottom-0 left-0 z-10 border-t border-base-300 bg-base-200/95 px-4 py-3 backdrop-blur-md">
         <div className="mx-auto max-w-lg">
           <button
             type="button"
             onClick={handleSubmit}
-            className="btn btn-primary h-12 w-full border border-base-content font-mono text-sm font-bold tracking-wider uppercase hard-offset"
+            className="btn btn-primary h-12 w-full rounded-full border-0 text-sm font-bold oneui-pill-shadow"
           >
-            {initialPatient ? 'Simpan Perubahan' : 'Simpan Pasien (Status: Belum EMR)'}
+            {initialPatient ? 'Simpan Perubahan' : 'Simpan Pasien'}
           </button>
         </div>
       </footer>
