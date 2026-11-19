@@ -1538,11 +1538,13 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
   ].join('\n')
 
   try {
-    const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+    const candidateModels = process.env.GEMINI_MODEL
+      ? [process.env.GEMINI_MODEL]
+      : ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-3.0-flash', 'gemini-2.5-flash-lite']
 
-    const callGemini = async (withSearch: boolean) =>
-      fetch(geminiUrl, {
+    const callGemini = async (modelName: string, withSearch: boolean) => {
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+      return fetch(geminiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1556,15 +1558,20 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
         }),
         signal: AbortSignal.timeout(24000),
       })
-
-    let gRes = await callGemini(true)
-    if (gRes.status === 400) {
-      gRes = await callGemini(false)
     }
 
-    if (!gRes.ok) {
-      const errText = await gRes.text()
-      return jsonResponse({ error: `Gemini API error (${gRes.status}): ${errText.slice(0, 240)}` }, 502)
+    let gRes: Response | null = null
+    for (const modelName of candidateModels) {
+      gRes = await callGemini(modelName, true)
+      if (gRes.status === 400) {
+        gRes = await callGemini(modelName, false)
+      }
+      if (gRes.status !== 404) break
+    }
+
+    if (!gRes || !gRes.ok) {
+      const errText = gRes ? await gRes.text() : 'No response'
+      return jsonResponse({ error: `Gemini API error (${gRes?.status ?? 502}): ${errText.slice(0, 240)}` }, 502)
     }
 
     const gData = (await gRes.json()) as {
