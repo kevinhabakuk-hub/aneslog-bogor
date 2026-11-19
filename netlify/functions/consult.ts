@@ -373,25 +373,28 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
 
   try {
     const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
-    const isVertexExpressKey = geminiApiKey.startsWith('AQ.')
-    const geminiUrl = isVertexExpressKey
-      ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
-      : `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
 
-    const gRes = await fetch(geminiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: systemInstruction }] },
-        contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-        tools: [{ googleSearch: {} }],
-        generationConfig: {
-          temperature: 0.2,
-          maxOutputTokens: 2400,
-        },
-      }),
-      signal: AbortSignal.timeout(24000),
-    })
+    const callGemini = async (withSearch: boolean) =>
+      fetch(geminiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: systemInstruction }] },
+          contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+          ...(withSearch ? { tools: [{ googleSearch: {} }] } : {}),
+          generationConfig: {
+            temperature: 0.2,
+            maxOutputTokens: 2400,
+          },
+        }),
+        signal: AbortSignal.timeout(24000),
+      })
+
+    let gRes = await callGemini(true)
+    if (gRes.status === 400) {
+      gRes = await callGemini(false)
+    }
 
     if (!gRes.ok) {
       const errText = await gRes.text()
