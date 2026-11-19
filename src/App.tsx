@@ -8,7 +8,13 @@ import { RekapView } from './components/RekapView'
 import { SettingsModal } from './components/SettingsModal'
 import { ShiftHome } from './components/ShiftHome'
 import { getTodayISO } from './lib/date'
-import { exportPatientsCSV, exportStoreJSON, loadStore, saveStore } from './lib/storage'
+import {
+  exportPatientsCSV,
+  exportStoreJSON,
+  loadStore,
+  parseImportedStoreJSON,
+  saveStore,
+} from './lib/storage'
 import type { AnesLogStore, PatientRecord } from './types/aneslog'
 
 function generateId(): string {
@@ -321,6 +327,28 @@ export function App() {
           onDeleteHospital={handleDeleteHospital}
           onExportCSV={() => exportPatientsCSV(store.patients, store.hospitals)}
           onExportJSON={() => exportStoreJSON(store)}
+          onImportJSON={(rawText) => {
+            const imported = parseImportedStoreJSON(rawText)
+            const mergedHospitals = new Map(store.hospitals.map((h) => [h.id, h]))
+            for (const h of imported.hospitals) mergedHospitals.set(h.id, h)
+
+            const mergedPatients = new Map(store.patients.map((p) => [p.id, p]))
+            for (const p of imported.patients) mergedPatients.set(p.id, p)
+
+            const nextPatients = Array.from(mergedPatients.values())
+            setStore((prev) => ({
+              ...prev,
+              hospitals: Array.from(mergedHospitals.values()),
+              patients: nextPatients,
+              activeHospitalId: mergedHospitals.has(imported.activeHospitalId)
+                ? imported.activeHospitalId
+                : prev.activeHospitalId,
+            }))
+            return {
+              restoredPatients: imported.patients.length,
+              totalPatients: nextPatients.length,
+            }
+          }}
         />
       )}
     </div>

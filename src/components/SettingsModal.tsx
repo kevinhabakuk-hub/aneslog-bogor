@@ -1,5 +1,5 @@
-import { Check, Download, KeyRound, Plus, ShieldCheck, Trash2, X } from 'lucide-react'
-import { useState, type FormEvent } from 'react'
+import { Check, Download, KeyRound, Plus, ShieldCheck, Trash2, Upload, X } from 'lucide-react'
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { getSavedConsultPin, saveConsultPin } from '../lib/consultApi'
 import type { Hospital } from '../types/aneslog'
 
@@ -11,6 +11,7 @@ interface SettingsModalProps {
   onDeleteHospital: (id: string) => void
   onExportCSV: () => void
   onExportJSON: () => void
+  onImportJSON: (rawText: string) => { restoredPatients: number; totalPatients: number }
 }
 
 export function SettingsModal({
@@ -21,10 +22,13 @@ export function SettingsModal({
   onDeleteHospital,
   onExportCSV,
   onExportJSON,
+  onImportJSON,
 }: SettingsModalProps) {
   const [newHospitalName, setNewHospitalName] = useState('')
   const [consultPin, setConsultPin] = useState(() => getSavedConsultPin())
   const [pinSaved, setPinSaved] = useState(false)
+  const [importStatus, setImportStatus] = useState<{ ok: boolean; msg: string } | null>(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   const handleAdd = (e: FormEvent) => {
     e.preventDefault()
@@ -39,6 +43,25 @@ export function SettingsModal({
     saveConsultPin(consultPin)
     setPinSaved(true)
     setTimeout(() => setPinSaved(false), 1800)
+  }
+
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    try {
+      const text = await file.text()
+      const { restoredPatients, totalPatients } = onImportJSON(text)
+      setImportStatus({
+        ok: true,
+        msg: `Berhasil restore ${restoredPatients} data pasien dari backup (total sekarang: ${totalPatients} pasien).`,
+      })
+    } catch (err) {
+      setImportStatus({
+        ok: false,
+        msg: err instanceof Error ? err.message : 'Gagal membaca file backup JSON.',
+      })
+    }
   }
 
   return (
@@ -157,6 +180,34 @@ export function SettingsModal({
                 Backup JSON
               </button>
             </div>
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".json,application/json"
+              onChange={handleFileChange}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="btn btn-sm btn-primary mt-2 h-11 w-full rounded-xl border-0 text-xs font-bold"
+            >
+              <Upload className="h-4 w-4" />
+              Restore / Import Backup JSON
+            </button>
+
+            {importStatus && (
+              <div
+                className={`mt-2.5 rounded-xl px-3 py-2 text-xs font-semibold ${
+                  importStatus.ok
+                    ? 'bg-success/12 text-success'
+                    : 'bg-error/12 text-error'
+                }`}
+              >
+                {importStatus.msg}
+              </div>
+            )}
           </section>
 
           {/* Privacy Guarantee */}

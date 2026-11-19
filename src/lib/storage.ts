@@ -133,6 +133,20 @@ export function exportStoreJSON(store: AnesLogStore): void {
   triggerDownload(json, `aneslog-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json')
 }
 
+export function parseImportedStoreJSON(rawText: string): AnesLogStore {
+  const parsed: unknown = JSON.parse(rawText)
+  const validated = AnesLogStoreSchema.safeParse(parsed)
+  if (!validated.success) {
+    throw new Error('Format file JSON bukan backup AnesLog yang valid.')
+  }
+  const data = validated.data
+  const activeExists = data.hospitals.some((h) => h.id === data.activeHospitalId)
+  return {
+    ...data,
+    activeHospitalId: activeExists ? data.activeHospitalId : data.hospitals[0].id,
+  }
+}
+
 function triggerDownload(content: string, filename: string, mimeType: string): void {
   const blob = new Blob([content], { type: mimeType })
   const url = URL.createObjectURL(blob)
