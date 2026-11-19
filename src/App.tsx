@@ -1,5 +1,7 @@
-import { BarChart3, ClipboardList, Moon, Settings, Sun } from 'lucide-react'
+import { BarChart3, BookOpen, ClipboardList, Sparkles } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import { BookVaultView } from './components/BookVaultView'
+import { ConsultView } from './components/ConsultView'
 import { PatientFormModal } from './components/PatientFormModal'
 import { PatientReadModal } from './components/PatientReadModal'
 import { RekapView } from './components/RekapView'
@@ -16,13 +18,20 @@ function generateId(): string {
   return `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
 }
 
+type MainTab = 'today' | 'consult' | 'vault' | 'rekap'
+
 export function App() {
   const [store, setStore] = useState<AnesLogStore>(() => loadStore())
-  const [activeTab, setActiveTab] = useState<'today' | 'rekap'>('today')
+  const [activeTab, setActiveTab] = useState<MainTab>('today')
   const [formOpen, setFormOpen] = useState(false)
   const [editingPatient, setEditingPatient] = useState<PatientRecord | null>(null)
   const [readingPatientId, setReadingPatientId] = useState<string | null>(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
+
+  // Consult AI context handoff
+  const [consultPatientId, setConsultPatientId] = useState<string | null>(null)
+  const [consultInitialQuery, setConsultInitialQuery] = useState<string>('')
+  const [focusBook, setFocusBook] = useState<{ slug: string; title: string } | null>(null)
 
   const todayISO = getTodayISO()
 
@@ -34,7 +43,7 @@ export function App() {
     document.documentElement.setAttribute('data-theme', store.theme)
     const metaTheme = document.querySelector('meta[name="theme-color"]')
     if (metaTheme) {
-      metaTheme.setAttribute('content', store.theme === 'or-dark' ? '#000000' : '#F2F4F7')
+      metaTheme.setAttribute('content', store.theme === 'or-dark' ? '#080E17' : '#0A2540')
     }
   }, [store.theme])
 
@@ -52,6 +61,11 @@ export function App() {
   const readingPatient = useMemo(
     () => store.patients.find((p) => p.id === readingPatientId) ?? null,
     [store.patients, readingPatientId]
+  )
+
+  const consultPatient = useMemo(
+    () => store.patients.find((p) => p.id === consultPatientId) ?? null,
+    [store.patients, consultPatientId]
   )
 
   const handleToggleTheme = () => {
@@ -115,6 +129,9 @@ export function App() {
       patients: prev.patients.filter((p) => p.id !== patientId),
     }))
     setReadingPatientId(null)
+    if (consultPatientId === patientId) {
+      setConsultPatientId(null)
+    }
   }
 
   const handleAddHospital = (name: string) => {
@@ -142,60 +159,60 @@ export function App() {
     })
   }
 
+  const handleConsultPatient = (patient: PatientRecord) => {
+    setConsultPatientId(patient.id)
+    setReadingPatientId(null)
+    setActiveTab('consult')
+  }
+
+  const handleConsultBookTopic = (bookSlug: string, bookTitle: string, prompt: string) => {
+    setFocusBook({ slug: bookSlug, title: bookTitle })
+    setConsultInitialQuery(prompt)
+    setActiveTab('consult')
+  }
+
   return (
     <div className="min-h-dvh bg-base-100 text-base-content">
-      {/* Top App Header */}
-      <header className="sticky top-0 z-30 border-b border-base-300/80 bg-base-200/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-lg items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl font-extrabold tracking-tight text-base-content">AnesLog</h1>
-            <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold tracking-wide text-primary uppercase">
-              Pre-Op
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              onClick={handleToggleTheme}
-              aria-label="Ganti mode terang/gelap"
-              className="btn btn-sm btn-ghost h-9 w-9 rounded-full bg-base-100 p-0 hover:bg-base-300"
-              title={store.theme === 'clinical-bone' ? 'Mode OR Gelap' : 'Mode One UI Terang'}
-            >
-              {store.theme === 'clinical-bone' ? (
-                <Moon className="h-4 w-4" />
-              ) : (
-                <Sun className="h-4 w-4" />
-              )}
-            </button>
-            <button
-              type="button"
-              onClick={() => setSettingsOpen(true)}
-              aria-label="Pengaturan RS dan Backup"
-              className="btn btn-sm btn-ghost h-9 w-9 rounded-full bg-base-100 p-0 hover:bg-base-300"
-              title="Kelola RS & Backup"
-            >
-              <Settings className="h-4 w-4" />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="mx-auto max-w-lg px-4 pt-4">
-        {activeTab === 'today' ? (
+      {/* Active Screen */}
+      <main>
+        {activeTab === 'today' && (
           <ShiftHome
             todayISO={todayISO}
+            theme={store.theme}
             hospitals={store.hospitals}
             activeHospitalId={store.activeHospitalId}
             patientsToday={patientsToday}
+            onToggleTheme={handleToggleTheme}
+            onOpenSettings={() => setSettingsOpen(true)}
             onSelectHospital={handleSelectHospital}
             onOpenAdd={() => {
               setEditingPatient(null)
               setFormOpen(true)
             }}
             onOpenPatient={(p) => setReadingPatientId(p.id)}
+            onConsultPatient={handleConsultPatient}
+            onOpenTab={(tab) => setActiveTab(tab)}
           />
-        ) : (
+        )}
+
+        {activeTab === 'consult' && (
+          <ConsultView
+            selectedPatient={consultPatient}
+            patientsToday={patientsToday}
+            query={consultInitialQuery}
+            focusBookSlug={focusBook?.slug ?? null}
+            focusBookTitle={focusBook?.title ?? null}
+            onQueryChange={setConsultInitialQuery}
+            onSelectPatient={(p) => setConsultPatientId(p?.id ?? null)}
+            onClearFocusBook={() => setFocusBook(null)}
+          />
+        )}
+
+        {activeTab === 'vault' && (
+          <BookVaultView onConsultBookTopic={handleConsultBookTopic} />
+        )}
+
+        {activeTab === 'rekap' && (
           <RekapView
             hospitals={store.hospitals}
             patients={store.patients}
@@ -204,35 +221,62 @@ export function App() {
         )}
       </main>
 
-      {/* Bottom 2-Tab Navigation (One UI Tactile) */}
+      {/* Medscape 4-Tab Bottom Navigation */}
       <nav
         aria-label="Navigasi Utama"
-        className="fixed right-0 bottom-0 left-0 z-30 border-t border-base-300/80 bg-base-200/95 backdrop-blur-md"
+        className="fixed right-0 bottom-0 left-0 z-30 border-t border-base-300 bg-base-200/95 backdrop-blur-lg"
       >
-        <div className="mx-auto grid max-w-lg grid-cols-2 gap-2 px-4 py-2">
+        <div className="mx-auto grid max-w-lg grid-cols-4 gap-1 px-2 pt-1.5 pb-2">
           <button
             type="button"
             onClick={() => setActiveTab('today')}
-            className={`flex h-11 items-center justify-center gap-2 rounded-full text-xs font-bold transition-colors ${
+            className={`flex flex-col items-center justify-center rounded-xl py-1.5 text-[10px] transition ${
               activeTab === 'today'
-                ? 'bg-primary/12 text-primary'
-                : 'text-secondary hover:bg-base-100 hover:text-base-content'
+                ? 'font-bold text-primary'
+                : 'font-medium text-secondary hover:text-base-content'
             }`}
           >
-            <ClipboardList className="h-4 w-4" />
-            Hari Ini
+            <ClipboardList className="h-5 w-5" />
+            <span className="mt-0.5">Hari Ini</span>
           </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('consult')}
+            className={`flex flex-col items-center justify-center rounded-xl py-1.5 text-[10px] transition ${
+              activeTab === 'consult'
+                ? 'font-bold text-primary'
+                : 'font-medium text-secondary hover:text-base-content'
+            }`}
+          >
+            <Sparkles className="h-5 w-5" />
+            <span className="mt-0.5">Consult AI</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setActiveTab('vault')}
+            className={`flex flex-col items-center justify-center rounded-xl py-1.5 text-[10px] transition ${
+              activeTab === 'vault'
+                ? 'font-bold text-primary'
+                : 'font-medium text-secondary hover:text-base-content'
+            }`}
+          >
+            <BookOpen className="h-5 w-5" />
+            <span className="mt-0.5">Buku (9)</span>
+          </button>
+
           <button
             type="button"
             onClick={() => setActiveTab('rekap')}
-            className={`flex h-11 items-center justify-center gap-2 rounded-full text-xs font-bold transition-colors ${
+            className={`flex flex-col items-center justify-center rounded-xl py-1.5 text-[10px] transition ${
               activeTab === 'rekap'
-                ? 'bg-primary/12 text-primary'
-                : 'text-secondary hover:bg-base-100 hover:text-base-content'
+                ? 'font-bold text-primary'
+                : 'font-medium text-secondary hover:text-base-content'
             }`}
           >
-            <BarChart3 className="h-4 w-4" />
-            Rekap
+            <BarChart3 className="h-5 w-5" />
+            <span className="mt-0.5">Rekap</span>
           </button>
         </div>
       </nav>
@@ -262,6 +306,7 @@ export function App() {
             setReadingPatientId(null)
             setFormOpen(true)
           }}
+          onConsult={() => handleConsultPatient(readingPatient)}
           onToggleEmrStatus={() => handleToggleEmrStatus(readingPatient.id)}
           onDelete={() => handleDeletePatient(readingPatient.id)}
         />

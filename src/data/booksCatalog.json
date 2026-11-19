@@ -1,0 +1,1148 @@
+[
+  {
+    "slug": "millers_anesthesia_9th_edition",
+    "title": "Miller's Anesthesia",
+    "edition": "9th Ed.",
+    "tag": "Core Reference",
+    "totalPages": 3336,
+    "totalChapters": 9,
+    "chapters": [
+      {
+        "title": "Front Cover",
+        "startPage": 1,
+        "endPage": 3,
+        "file": "ch_01_front_cover.md"
+      },
+      {
+        "title": "SECTION I • Introduction",
+        "startPage": 4,
+        "endPage": 288,
+        "file": "ch_02_section_i_introduction.md"
+      },
+      {
+        "title": "SECTION II • Anesthetic Physiology",
+        "startPage": 289,
+        "endPage": 1052,
+        "file": "ch_03_section_ii_anesthetic_physiology.md"
+      },
+      {
+        "title": "SECTION III • Anesthesia Management",
+        "startPage": 1053,
+        "endPage": 1897,
+        "file": "ch_04_section_iii_anesthesia_management.md"
+      },
+      {
+        "title": "SECTION IV • Adult Subspecialty Management",
+        "startPage": 1898,
+        "endPage": 2802,
+        "file": "ch_05_section_iv_adult_subspecialty_management.md"
+      },
+      {
+        "title": "SECTION V • Pediatric Anesthesia",
+        "startPage": 2803,
+        "endPage": 3053,
+        "file": "ch_06_section_v_pediatric_anesthesia.md"
+      },
+      {
+        "title": "SECTION VI • Postoperative Care",
+        "startPage": 3054,
+        "endPage": 3133,
+        "file": "ch_07_section_vi_postoperative_care.md"
+      },
+      {
+        "title": "SECTION VII • Critical Care Medicine",
+        "startPage": 3134,
+        "endPage": 3239,
+        "file": "ch_08_section_vii_critical_care_medicine.md"
+      },
+      {
+        "title": "SECTION VIII • Ancillary Responsibilities and Problems",
+        "startPage": 3240,
+        "endPage": 3336,
+        "file": "ch_09_section_viii_ancillary_responsibilities_and_proble.md"
+      }
+    ]
+  },
+  {
+    "slug": "cardiac_anesthesia_for_noncardiac_surgery_1st_edition",
+    "title": "Cardiac Anesthesia for Noncardiac Surgery",
+    "edition": "1st Ed.",
+    "tag": "Perioperative",
+    "totalPages": 584,
+    "totalChapters": 28,
+    "chapters": [
+      {
+        "title": "Front Matter",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_front_matter.md"
+      },
+      {
+        "title": "Front Matter",
+        "startPage": 2,
+        "endPage": 3,
+        "file": "ch_02_front_matter.md"
+      },
+      {
+        "title": "Copyright Page",
+        "startPage": 4,
+        "endPage": 4,
+        "file": "ch_03_copyright_page.md"
+      },
+      {
+        "title": "Dedication",
+        "startPage": 5,
+        "endPage": 5,
+        "file": "ch_04_dedication.md"
+      },
+      {
+        "title": "Contributors",
+        "startPage": 6,
+        "endPage": 9,
+        "file": "ch_05_contributors.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 10,
+        "endPage": 11,
+        "file": "ch_06_preface.md"
+      },
+      {
+        "title": "SECTION I Perioperative Medicine",
+        "startPage": 12,
+        "endPage": 25,
+        "file": "ch_07_section_i_perioperative_medicine.md"
+      },
+      {
+        "title": "2 Perioperative Approach to the High-Risk Cardiac Patient",
+        "startPage": 26,
+        "endPage": 42,
+        "file": "ch_08_2_perioperative_approach_to_the_high_risk_cardiac.md"
+      },
+      {
+        "title": "3 Care of the Patient With Coronary Stents Undergoing Noncardiac Surgery",
+        "startPage": 43,
+        "endPage": 79,
+        "file": "ch_09_3_care_of_the_patient_with_coronary_stents_undergo.md"
+      },
+      {
+        "title": "4 Cardiovascular Implantable Electronic Device Management in Noncardiac Surgery",
+        "startPage": 80,
+        "endPage": 109,
+        "file": "ch_10_4_cardiovascular_implantable_electronic_device_man.md"
+      },
+      {
+        "title": "5 Left Ventricular Assist Device–Supported Patient Presenting for Noncardiac Surgery",
+        "startPage": 110,
+        "endPage": 129,
+        "file": "ch_11_5_left_ventricular_assist_devicesupported_patient.md"
+      },
+      {
+        "title": "6 Anesthesia for Noncardiac Surgery After Heart Transplant",
+        "startPage": 130,
+        "endPage": 147,
+        "file": "ch_12_6_anesthesia_for_noncardiac_surgery_after_heart_tr.md"
+      },
+      {
+        "title": "7 Pulmonary Hypertension in Noncardiac Surgical Patients",
+        "startPage": 148,
+        "endPage": 174,
+        "file": "ch_13_7_pulmonary_hypertension_in_noncardiac_surgical_pa.md"
+      },
+      {
+        "title": "8 Adult Congenital Heart Disease in Noncardiac Surgery",
+        "startPage": 175,
+        "endPage": 205,
+        "file": "ch_14_8_adult_congenital_heart_disease_in_noncardiac_sur.md"
+      },
+      {
+        "title": "SECTION II Anesthesia for Noncardiac Surgery",
+        "startPage": 206,
+        "endPage": 221,
+        "file": "ch_15_section_ii_anesthesia_for_noncardiac_surgery.md"
+      },
+      {
+        "title": "10 Echocardiography in Noncardiac Surgery",
+        "startPage": 222,
+        "endPage": 254,
+        "file": "ch_16_10_echocardiography_in_noncardiac_surgery.md"
+      },
+      {
+        "title": "11 Cardiovascular Pharmacology in Noncardiac Surgery",
+        "startPage": 255,
+        "endPage": 296,
+        "file": "ch_17_11_cardiovascular_pharmacology_in_noncardiac_surge.md"
+      },
+      {
+        "title": "12 General, Regional, or Monitored Anesthesia Care for the Cardiac Patient Undergoing Noncardiac Surgery",
+        "startPage": 297,
+        "endPage": 320,
+        "file": "ch_18_12_general_regional_or_monitored_anesthesia_care_f.md"
+      },
+      {
+        "title": "13 Vascular Surgery",
+        "startPage": 321,
+        "endPage": 347,
+        "file": "ch_19_13_vascular_surgery.md"
+      },
+      {
+        "title": "14 The Cardiac Patient for Thoracic Noncardiac Surgery",
+        "startPage": 348,
+        "endPage": 386,
+        "file": "ch_20_14_the_cardiac_patient_for_thoracic_noncardiac_sur.md"
+      },
+      {
+        "title": "15 Anesthesia for Cardioversion and Electrophysiologic Procedures",
+        "startPage": 387,
+        "endPage": 411,
+        "file": "ch_21_15_anesthesia_for_cardioversion_and_electrophysiol.md"
+      },
+      {
+        "title": "16 Cardiac Patients Requiring Emergent Noncardiac Surgery",
+        "startPage": 412,
+        "endPage": 460,
+        "file": "ch_22_16_cardiac_patients_requiring_emergent_noncardiac.md"
+      },
+      {
+        "title": "17 Cardiac Considerations During Orthotopic Liver Transplantation",
+        "startPage": 461,
+        "endPage": 473,
+        "file": "ch_23_17_cardiac_considerations_during_orthotopic_liver.md"
+      },
+      {
+        "title": "18 The Pregnant Patient With Cardiac Disease",
+        "startPage": 474,
+        "endPage": 500,
+        "file": "ch_24_18_the_pregnant_patient_with_cardiac_disease.md"
+      },
+      {
+        "title": "19 Goal-Directed Fluid Therapy, Perioperative Pain Management, and Enhanced Recovery",
+        "startPage": 501,
+        "endPage": 516,
+        "file": "ch_25_19_goal_directed_fluid_therapy_perioperative_pain.md"
+      },
+      {
+        "title": "SECTION III Critical Care Medicine",
+        "startPage": 517,
+        "endPage": 532,
+        "file": "ch_26_section_iii_critical_care_medicine.md"
+      },
+      {
+        "title": "21 Postoperative Care of the Critically Ill",
+        "startPage": 533,
+        "endPage": 544,
+        "file": "ch_27_21_postoperative_care_of_the_critically_ill.md"
+      },
+      {
+        "title": "22 Reducing Major Adverse Cardiac Events and All-Cause Mortality in Noncardiac Surgery",
+        "startPage": 545,
+        "endPage": 584,
+        "file": "ch_28_22_reducing_major_adverse_cardiac_events_and_all_c.md"
+      }
+    ]
+  },
+  {
+    "slug": "chestnuts_obstetric_anesthesia_principles_and_practice_6th_edition",
+    "title": "Chestnut's Obstetric Anesthesia",
+    "edition": "6th Ed.",
+    "tag": "Obstetric",
+    "totalPages": 1384,
+    "totalChapters": 25,
+    "chapters": [
+      {
+        "title": "Front Cover",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_front_cover.md"
+      },
+      {
+        "title": "Inside Front Cover",
+        "startPage": 2,
+        "endPage": 2,
+        "file": "ch_02_inside_front_cover.md"
+      },
+      {
+        "title": "Chestnut's Obstetric Anesthesia",
+        "startPage": 3,
+        "endPage": 5,
+        "file": "ch_03_chestnuts_obstetric_anesthesia.md"
+      },
+      {
+        "title": "Copyright Page",
+        "startPage": 6,
+        "endPage": 6,
+        "file": "ch_04_copyright_page.md"
+      },
+      {
+        "title": "Dedication",
+        "startPage": 7,
+        "endPage": 7,
+        "file": "ch_05_dedication.md"
+      },
+      {
+        "title": "Acknowledgment of Contributors to Previous Editions",
+        "startPage": 8,
+        "endPage": 9,
+        "file": "ch_06_acknowledgment_of_contributors_to_previous_edition.md"
+      },
+      {
+        "title": "Contributors",
+        "startPage": 10,
+        "endPage": 13,
+        "file": "ch_07_contributors.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 14,
+        "endPage": 14,
+        "file": "ch_08_preface.md"
+      },
+      {
+        "title": "Table Of Contents",
+        "startPage": 15,
+        "endPage": 16,
+        "file": "ch_09_table_of_contents.md"
+      },
+      {
+        "title": "I Introduction",
+        "startPage": 17,
+        "endPage": 27,
+        "file": "ch_10_i_introduction.md"
+      },
+      {
+        "title": "II Maternal and Fetal Physiology",
+        "startPage": 28,
+        "endPage": 111,
+        "file": "ch_11_ii_maternal_and_fetal_physiology.md"
+      },
+      {
+        "title": "III Fetal and Neonatal Assessment and Therapy",
+        "startPage": 112,
+        "endPage": 238,
+        "file": "ch_12_iii_fetal_and_neonatal_assessment_and_therapy.md"
+      },
+      {
+        "title": "IV Foundations in Obstetric Anesthesia",
+        "startPage": 239,
+        "endPage": 327,
+        "file": "ch_13_iv_foundations_in_obstetric_anesthesia.md"
+      },
+      {
+        "title": "V Anesthesia before and during Pregnancy",
+        "startPage": 328,
+        "endPage": 407,
+        "file": "ch_14_v_anesthesia_before_and_during_pregnancy.md"
+      },
+      {
+        "title": "VI Labor and Vaginal Delivery",
+        "startPage": 408,
+        "endPage": 582,
+        "file": "ch_15_vi_labor_and_vaginal_delivery.md"
+      },
+      {
+        "title": "VII Cesarean Delivery",
+        "startPage": 583,
+        "endPage": 685,
+        "file": "ch_16_vii_cesarean_delivery.md"
+      },
+      {
+        "title": "VIII Anesthetic Complications",
+        "startPage": 686,
+        "endPage": 812,
+        "file": "ch_17_viii_anesthetic_complications.md"
+      },
+      {
+        "title": "IX Obstetric Complications",
+        "startPage": 813,
+        "endPage": 987,
+        "file": "ch_18_ix_obstetric_complications.md"
+      },
+      {
+        "title": "X The Parturient with Systemic Disease",
+        "startPage": 988,
+        "endPage": 1316,
+        "file": "ch_19_x_the_parturient_with_systemic_disease.md"
+      },
+      {
+        "title": "Appendix A American Society of Anesthesiologists Guidelines for Neuraxial Anesthesia in Obstetrics*",
+        "startPage": 1317,
+        "endPage": 1318,
+        "file": "ch_20_appendix_a_american_society_of_anesthesiologists_g.md"
+      },
+      {
+        "title": "Appendix B Practice Guidelines for Obstetric Anesthesia: an Updated Report by the American Society of Anesthesiologists Task Force on Obstetric Anesthesia and the Society for Obstetric Anesthesia and Perinatology",
+        "startPage": 1319,
+        "endPage": 1342,
+        "file": "ch_21_appendix_b_practice_guidelines_for_obstetric_anest.md"
+      },
+      {
+        "title": "Appendix C Optimal Goals for Anesthesia Care in Obstetrics",
+        "startPage": 1343,
+        "endPage": 1344,
+        "file": "ch_22_appendix_c_optimal_goals_for_anesthesia_care_in_ob.md"
+      },
+      {
+        "title": "Appendix D Information Technology Resources for Obstetric Anesthesia Providers",
+        "startPage": 1345,
+        "endPage": 1349,
+        "file": "ch_23_appendix_d_information_technology_resources_for_ob.md"
+      },
+      {
+        "title": "Index",
+        "startPage": 1350,
+        "endPage": 1383,
+        "file": "ch_24_index.md"
+      },
+      {
+        "title": "Inside Back Cover",
+        "startPage": 1384,
+        "endPage": 1384,
+        "file": "ch_25_inside_back_cover.md"
+      }
+    ]
+  },
+  {
+    "slug": "cottrell_and_patels_neuroanesthesia_6th_edition",
+    "title": "Cottrell & Patel's Neuroanesthesia",
+    "edition": "6th Ed.",
+    "tag": "Neuroanesthesia",
+    "totalPages": 523,
+    "totalChapters": 41,
+    "chapters": [
+      {
+        "title": "Front Cover",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_front_cover.md"
+      },
+      {
+        "title": "Inside Front Cover",
+        "startPage": 2,
+        "endPage": 4,
+        "file": "ch_02_inside_front_cover.md"
+      },
+      {
+        "title": "Cottrell and Patel’s Neuroanesthesia",
+        "startPage": 5,
+        "endPage": 5,
+        "file": "ch_03_cottrell_and_patels_neuroanesthesia.md"
+      },
+      {
+        "title": "Copyright",
+        "startPage": 6,
+        "endPage": 6,
+        "file": "ch_04_copyright.md"
+      },
+      {
+        "title": "Dedication to William L. Young, MD (1954 – 2013)",
+        "startPage": 7,
+        "endPage": 7,
+        "file": "ch_05_dedication_to_william_l_young_md_1954_2013.md"
+      },
+      {
+        "title": "Acknowledgment",
+        "startPage": 8,
+        "endPage": 8,
+        "file": "ch_06_acknowledgment.md"
+      },
+      {
+        "title": "Contents",
+        "startPage": 9,
+        "endPage": 10,
+        "file": "ch_07_contents.md"
+      },
+      {
+        "title": "Foreword",
+        "startPage": 11,
+        "endPage": 11,
+        "file": "ch_08_foreword.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 12,
+        "endPage": 12,
+        "file": "ch_09_preface.md"
+      },
+      {
+        "title": "List of Contributors",
+        "startPage": 13,
+        "endPage": 16,
+        "file": "ch_10_list_of_contributors.md"
+      },
+      {
+        "title": "Chapter 1: Brain Metabolism, the Pathophysiology of Brain Injury, and Potential Beneficial Agents and Techniques",
+        "startPage": 17,
+        "endPage": 34,
+        "file": "ch_11_chapter_1_brain_metabolism_the_pathophysiology_of.md"
+      },
+      {
+        "title": "Chapter 2: Cerebral and Spinal Cord Blood Flow",
+        "startPage": 35,
+        "endPage": 74,
+        "file": "ch_12_chapter_2_cerebral_and_spinal_cord_blood_flow.md"
+      },
+      {
+        "title": "Chapter 3: Cerebrospinal Fluid",
+        "startPage": 75,
+        "endPage": 89,
+        "file": "ch_13_chapter_3_cerebrospinal_fluid.md"
+      },
+      {
+        "title": "Chapter 4: Effects of Anesthetic Agents and Other Drugs on Cerebral Blood Flow, Metabolism, and Intracranial Pressure",
+        "startPage": 90,
+        "endPage": 106,
+        "file": "ch_14_chapter_4_effects_of_anesthetic_agents_and_other_d.md"
+      },
+      {
+        "title": "Chapter 5: Modern Neuroradiology Relevant to Anesthetic and Perioperative Management",
+        "startPage": 107,
+        "endPage": 129,
+        "file": "ch_15_chapter_5_modern_neuroradiology_relevant_to_anesth.md"
+      },
+      {
+        "title": "Chapter 6: Evoked Potentials",
+        "startPage": 130,
+        "endPage": 142,
+        "file": "ch_16_chapter_6_evoked_potentials.md"
+      },
+      {
+        "title": "Chapter 7: Transcranial Doppler Ultrasonography in Anesthesia and Neurosurgery",
+        "startPage": 143,
+        "endPage": 157,
+        "file": "ch_17_chapter_7_transcranial_doppler_ultrasonography_in.md"
+      },
+      {
+        "title": "Chapter 8: Multi-modality Neurologic Monitoring",
+        "startPage": 158,
+        "endPage": 167,
+        "file": "ch_18_chapter_8_multi_modality_neurologic_monitoring.md"
+      },
+      {
+        "title": "Chapter 9: Fluid Management During Craniotomy",
+        "startPage": 168,
+        "endPage": 181,
+        "file": "ch_19_chapter_9_fluid_management_during_craniotomy.md"
+      },
+      {
+        "title": "Chapter 10: Care of the Acutely Unstable Patient",
+        "startPage": 182,
+        "endPage": 204,
+        "file": "ch_20_chapter_10_care_of_the_acutely_unstable_patient.md"
+      },
+      {
+        "title": "Chapter 11: Supratentorial Masses: Anesthetic Considerations",
+        "startPage": 205,
+        "endPage": 224,
+        "file": "ch_21_chapter_11_supratentorial_masses_anesthetic_consid.md"
+      },
+      {
+        "title": "Chapter 12: Anesthetic Management for Posterior Fossa Surgery",
+        "startPage": 225,
+        "endPage": 237,
+        "file": "ch_22_chapter_12_anesthetic_management_for_posterior_fos.md"
+      },
+      {
+        "title": "Chapter 13: Anesthetic Management of Cerebral Aneurysm Surgery",
+        "startPage": 238,
+        "endPage": 263,
+        "file": "ch_23_chapter_13_anesthetic_management_of_cerebral_aneur.md"
+      },
+      {
+        "title": "Chapter 14: Interventional Neuroradiology Anesthetic Management",
+        "startPage": 264,
+        "endPage": 278,
+        "file": "ch_24_chapter_14_interventional_neuroradiology_anestheti.md"
+      },
+      {
+        "title": "Chapter 15: Anesthetic Considerations for Surgical Resection of Brain Arteriovenous Malformations",
+        "startPage": 279,
+        "endPage": 292,
+        "file": "ch_25_chapter_15_anesthetic_considerations_for_surgical.md"
+      },
+      {
+        "title": "Chapter 16: Occlusive Cerebrovascular Disease: Anesthetic Considerations",
+        "startPage": 293,
+        "endPage": 313,
+        "file": "ch_26_chapter_16_occlusive_cerebrovascular_disease_anest.md"
+      },
+      {
+        "title": "Chapter 17: Awake Craniotomy, Epilepsy, Minimally Invasive and Robotic Surgery",
+        "startPage": 314,
+        "endPage": 332,
+        "file": "ch_27_chapter_17_awake_craniotomy_epilepsy_minimally_inv.md"
+      },
+      {
+        "title": "Chapter 18: Stereotactic Surgery, Deep Brain Stimulation, Brain Biopsy, and Gene Therapies",
+        "startPage": 333,
+        "endPage": 341,
+        "file": "ch_28_chapter_18_stereotactic_surgery_deep_brain_stimula.md"
+      },
+      {
+        "title": "Chapter 19: Perioperative Management of Adult Patients with Severe Head Injury",
+        "startPage": 342,
+        "endPage": 352,
+        "file": "ch_29_chapter_19_perioperative_management_of_adult_patie.md"
+      },
+      {
+        "title": "Chapter 20: Pediatric Neuroanesthesia and Critical Care",
+        "startPage": 353,
+        "endPage": 366,
+        "file": "ch_30_chapter_20_pediatric_neuroanesthesia_and_critical.md"
+      },
+      {
+        "title": "Chapter 21: Neurosurgical Diseases and Trauma of the Spine and Spinal Cord: Anesthetic Considerations",
+        "startPage": 367,
+        "endPage": 414,
+        "file": "ch_31_chapter_21_neurosurgical_diseases_and_trauma_of_th.md"
+      },
+      {
+        "title": "Chapter 22: Neurologic Disease and Anesthesia",
+        "startPage": 415,
+        "endPage": 425,
+        "file": "ch_32_chapter_22_neurologic_disease_and_anesthesia.md"
+      },
+      {
+        "title": "Chapter 23: Postoperative and Intensive Care Including Head Injury and Multisystem Sequelae",
+        "startPage": 426,
+        "endPage": 439,
+        "file": "ch_33_chapter_23_postoperative_and_intensive_care_includ.md"
+      },
+      {
+        "title": "Chapter 24: Chronic Pain Management",
+        "startPage": 440,
+        "endPage": 448,
+        "file": "ch_34_chapter_24_chronic_pain_management.md"
+      },
+      {
+        "title": "Chapter 25: Anesthesia for Neurosurgery in the Pregnant Patient",
+        "startPage": 449,
+        "endPage": 459,
+        "file": "ch_35_chapter_25_anesthesia_for_neurosurgery_in_the_preg.md"
+      },
+      {
+        "title": "Chapter 26: Ethical Considerations in the Care of Patients with Neurosurgical Disease",
+        "startPage": 460,
+        "endPage": 473,
+        "file": "ch_36_chapter_26_ethical_considerations_in_the_care_of_p.md"
+      },
+      {
+        "title": "Chapter 27: The Pituitary Gland and Associated Pathologic States",
+        "startPage": 474,
+        "endPage": 483,
+        "file": "ch_37_chapter_27_the_pituitary_gland_and_associated_path.md"
+      },
+      {
+        "title": "Chapter 28: Information Management and Technology",
+        "startPage": 484,
+        "endPage": 490,
+        "file": "ch_38_chapter_28_information_management_and_technology.md"
+      },
+      {
+        "title": "Chapter 29: Future Advances in Neuroanesthesia",
+        "startPage": 491,
+        "endPage": 505,
+        "file": "ch_39_chapter_29_future_advances_in_neuroanesthesia.md"
+      },
+      {
+        "title": "Index",
+        "startPage": 506,
+        "endPage": 522,
+        "file": "ch_40_index.md"
+      },
+      {
+        "title": "Inside Back Cover",
+        "startPage": 523,
+        "endPage": 523,
+        "file": "ch_41_inside_back_cover.md"
+      }
+    ]
+  },
+  {
+    "slug": "gregorys_pediatric_anesthesia_6th_edition",
+    "title": "Gregory's Pediatric Anesthesia",
+    "edition": "6th Ed.",
+    "tag": "Pediatric",
+    "totalPages": 1327,
+    "totalChapters": 15,
+    "chapters": [
+      {
+        "title": "Cover",
+        "startPage": 1,
+        "endPage": 2,
+        "file": "ch_01_cover.md"
+      },
+      {
+        "title": "Half Title",
+        "startPage": 3,
+        "endPage": 3,
+        "file": "ch_02_half_title.md"
+      },
+      {
+        "title": "Page Title",
+        "startPage": 4,
+        "endPage": 4,
+        "file": "ch_03_page_title.md"
+      },
+      {
+        "title": "Copyright",
+        "startPage": 5,
+        "endPage": 5,
+        "file": "ch_04_copyright.md"
+      },
+      {
+        "title": "Contents",
+        "startPage": 6,
+        "endPage": 7,
+        "file": "ch_05_contents.md"
+      },
+      {
+        "title": "List of Contributors",
+        "startPage": 8,
+        "endPage": 12,
+        "file": "ch_06_list_of_contributors.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 13,
+        "endPage": 13,
+        "file": "ch_07_preface.md"
+      },
+      {
+        "title": "List of Abbreviations",
+        "startPage": 14,
+        "endPage": 19,
+        "file": "ch_08_list_of_abbreviations.md"
+      },
+      {
+        "title": "Part 1 Principles of Pediatric Anesthesia",
+        "startPage": 20,
+        "endPage": 316,
+        "file": "ch_09_part_1_principles_of_pediatric_anesthesia.md"
+      },
+      {
+        "title": "Part 2 Pediatric Anesthesia Management",
+        "startPage": 317,
+        "endPage": 493,
+        "file": "ch_10_part_2_pediatric_anesthesia_management.md"
+      },
+      {
+        "title": "Part 3 Practice of Pediatric Anesthesia",
+        "startPage": 494,
+        "endPage": 1136,
+        "file": "ch_11_part_3_practice_of_pediatric_anesthesia.md"
+      },
+      {
+        "title": "Part 4 Quality, Outcomes, and Complications inPediatric Anesthesia",
+        "startPage": 1137,
+        "endPage": 1276,
+        "file": "ch_12_part_4_quality_outcomes_and_complications_inpediat.md"
+      },
+      {
+        "title": "APPENDIX A",
+        "startPage": 1277,
+        "endPage": 1281,
+        "file": "ch_13_appendix_a.md"
+      },
+      {
+        "title": "APPENDIX B",
+        "startPage": 1282,
+        "endPage": 1299,
+        "file": "ch_14_appendix_b.md"
+      },
+      {
+        "title": "Index",
+        "startPage": 1300,
+        "endPage": 1327,
+        "file": "ch_15_index.md"
+      }
+    ]
+  },
+  {
+    "slug": "hadzics_textbook_of_regional_anesthesia_and_acute_pain_management_2nd",
+    "title": "Hadzic's Regional Anesthesia & Acute Pain",
+    "edition": "2nd Ed.",
+    "tag": "Regional & Pain",
+    "totalPages": 1535,
+    "totalChapters": 25,
+    "chapters": [
+      {
+        "title": "Cover",
+        "startPage": 1,
+        "endPage": 3,
+        "file": "ch_01_cover.md"
+      },
+      {
+        "title": "Title Page",
+        "startPage": 4,
+        "endPage": 4,
+        "file": "ch_02_title_page.md"
+      },
+      {
+        "title": "Copyright Page",
+        "startPage": 5,
+        "endPage": 5,
+        "file": "ch_03_copyright_page.md"
+      },
+      {
+        "title": "Dedication",
+        "startPage": 6,
+        "endPage": 7,
+        "file": "ch_04_dedication.md"
+      },
+      {
+        "title": "Contents",
+        "startPage": 8,
+        "endPage": 15,
+        "file": "ch_05_contents.md"
+      },
+      {
+        "title": "Contributors",
+        "startPage": 16,
+        "endPage": 25,
+        "file": "ch_06_contributors.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 26,
+        "endPage": 27,
+        "file": "ch_07_preface.md"
+      },
+      {
+        "title": "Acknowledgments",
+        "startPage": 28,
+        "endPage": 29,
+        "file": "ch_08_acknowledgments.md"
+      },
+      {
+        "title": "Part 1 History",
+        "startPage": 30,
+        "endPage": 47,
+        "file": "ch_09_part_1_history.md"
+      },
+      {
+        "title": "Part 2 Foundations Of Local And Regional Anesthesia",
+        "startPage": 48,
+        "endPage": 303,
+        "file": "ch_10_part_2_foundations_of_local_and_regional_anesthesi.md"
+      },
+      {
+        "title": "Part 3 Clinical Practice of Regional Anesthesia",
+        "startPage": 304,
+        "endPage": 737,
+        "file": "ch_11_part_3_clinical_practice_of_regional_anesthesia.md"
+      },
+      {
+        "title": "Part 4 Ultrasound Imaging of Neuraxial and Perivertebral Space",
+        "startPage": 738,
+        "endPage": 799,
+        "file": "ch_12_part_4_ultrasound_imaging_of_neuraxial_and_periver.md"
+      },
+      {
+        "title": "Part 5 Obstetric Anesthesia",
+        "startPage": 800,
+        "endPage": 825,
+        "file": "ch_13_part_5_obstetric_anesthesia.md"
+      },
+      {
+        "title": "Part 6 Pediatric Anesthesia",
+        "startPage": 826,
+        "endPage": 891,
+        "file": "ch_14_part_6_pediatric_anesthesia.md"
+      },
+      {
+        "title": "Part 7 Anesthesia In Patients With Specific Considerations",
+        "startPage": 892,
+        "endPage": 1049,
+        "file": "ch_15_part_7_anesthesia_in_patients_with_specific_consid.md"
+      },
+      {
+        "title": "Part 8 Regional Anesthesia in the Emergency Department",
+        "startPage": 1050,
+        "endPage": 1073,
+        "file": "ch_16_part_8_regional_anesthesia_in_the_emergency_depart.md"
+      },
+      {
+        "title": "Part 9 Complications of Local and Regional Anesthesia",
+        "startPage": 1074,
+        "endPage": 1135,
+        "file": "ch_17_part_9_complications_of_local_and_regional_anesthe.md"
+      },
+      {
+        "title": "Part 10 Last: Local Anesthetic Systemic Toxicity",
+        "startPage": 1136,
+        "endPage": 1143,
+        "file": "ch_18_part_10_last_local_anesthetic_systemic_toxicity.md"
+      },
+      {
+        "title": "Part 11 Perioperative Outcome and Economics of Regional Anesthesia",
+        "startPage": 1144,
+        "endPage": 1193,
+        "file": "ch_19_part_11_perioperative_outcome_and_economics_of_reg.md"
+      },
+      {
+        "title": "Part 12 Acute Pain Management",
+        "startPage": 1194,
+        "endPage": 1263,
+        "file": "ch_20_part_12_acute_pain_management.md"
+      },
+      {
+        "title": "Part 13 Education in Regional Anesthesia",
+        "startPage": 1264,
+        "endPage": 1289,
+        "file": "ch_21_part_13_education_in_regional_anesthesia.md"
+      },
+      {
+        "title": "Part 14 Statistics and Principles of Research Design in Regional Anesthesia and Acute Pain Medicine",
+        "startPage": 1290,
+        "endPage": 1315,
+        "file": "ch_22_part_14_statistics_and_principles_of_research_desi.md"
+      },
+      {
+        "title": "Part 15 Nerve Stimulator and Surface Anatomy-Based Nerve Blocks",
+        "startPage": 1316,
+        "endPage": 1471,
+        "file": "ch_23_part_15_nerve_stimulator_and_surface_anatomy_based.md"
+      },
+      {
+        "title": "Appendices",
+        "startPage": 1472,
+        "endPage": 1497,
+        "file": "ch_24_appendices.md"
+      },
+      {
+        "title": "Index",
+        "startPage": 1498,
+        "endPage": 1535,
+        "file": "ch_25_index.md"
+      }
+    ]
+  },
+  {
+    "slug": "kaplans_essentials_of_cardiac_anesthesia_for_cardiac_surgery_2nd_editi",
+    "title": "Kaplan's Essentials of Cardiac Anesthesia",
+    "edition": "2nd Ed.",
+    "tag": "Cardiac",
+    "totalPages": 891,
+    "totalChapters": 16,
+    "chapters": [
+      {
+        "title": "Front Cover",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_front_cover.md"
+      },
+      {
+        "title": "Inside Front Cover",
+        "startPage": 2,
+        "endPage": 2,
+        "file": "ch_02_inside_front_cover.md"
+      },
+      {
+        "title": "Kaplan's Essentials of Cardiac Anesthesia",
+        "startPage": 3,
+        "endPage": 5,
+        "file": "ch_03_kaplans_essentials_of_cardiac_anesthesia.md"
+      },
+      {
+        "title": "Copyright Page",
+        "startPage": 6,
+        "endPage": 6,
+        "file": "ch_04_copyright_page.md"
+      },
+      {
+        "title": "Dedication",
+        "startPage": 7,
+        "endPage": 8,
+        "file": "ch_05_dedication.md"
+      },
+      {
+        "title": "Contributors",
+        "startPage": 9,
+        "endPage": 18,
+        "file": "ch_06_contributors.md"
+      },
+      {
+        "title": "Preface",
+        "startPage": 19,
+        "endPage": 20,
+        "file": "ch_07_preface.md"
+      },
+      {
+        "title": "Table Of Contents",
+        "startPage": 21,
+        "endPage": 24,
+        "file": "ch_08_table_of_contents.md"
+      },
+      {
+        "title": "I Preoperative Assessment and Management",
+        "startPage": 25,
+        "endPage": 84,
+        "file": "ch_09_i_preoperative_assessment_and_management.md"
+      },
+      {
+        "title": "II Cardiovascular Physiology, Pharmacology, Molecular Biology, and Genetics",
+        "startPage": 85,
+        "endPage": 190,
+        "file": "ch_10_ii_cardiovascular_physiology_pharmacology_molecula.md"
+      },
+      {
+        "title": "III Monitoring",
+        "startPage": 191,
+        "endPage": 344,
+        "file": "ch_11_iii_monitoring.md"
+      },
+      {
+        "title": "IV Anesthesia for Cardiac Surgical Procedures",
+        "startPage": 345,
+        "endPage": 630,
+        "file": "ch_12_iv_anesthesia_for_cardiac_surgical_procedures.md"
+      },
+      {
+        "title": "V Extracorporeal Circulation",
+        "startPage": 631,
+        "endPage": 764,
+        "file": "ch_13_v_extracorporeal_circulation.md"
+      },
+      {
+        "title": "VI Postoperative Care",
+        "startPage": 765,
+        "endPage": 860,
+        "file": "ch_14_vi_postoperative_care.md"
+      },
+      {
+        "title": "Index",
+        "startPage": 861,
+        "endPage": 890,
+        "file": "ch_15_index.md"
+      },
+      {
+        "title": "Inside Back Cover",
+        "startPage": 891,
+        "endPage": 891,
+        "file": "ch_16_inside_back_cover.md"
+      }
+    ]
+  },
+  {
+    "slug": "morgan_mikhails_clinical_anesthesiology_6th_edition",
+    "title": "Morgan & Mikhail's Clinical Anesthesiology",
+    "edition": "6th Ed.",
+    "tag": "Clinical Core",
+    "totalPages": 1362,
+    "totalChapters": 7,
+    "chapters": [
+      {
+        "title": "Cover",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_cover.md"
+      },
+      {
+        "title": "1 The Practice of Anesthesiology",
+        "startPage": 2,
+        "endPage": 9,
+        "file": "ch_02_1_the_practice_of_anesthesiology.md"
+      },
+      {
+        "title": "SECTION I Anesthetic Equipment & Monitors",
+        "startPage": 10,
+        "endPage": 139,
+        "file": "ch_03_section_i_anesthetic_equipment_monitors.md"
+      },
+      {
+        "title": "SECTION II Clinical Pharmacology",
+        "startPage": 140,
+        "endPage": 295,
+        "file": "ch_04_section_ii_clinical_pharmacology.md"
+      },
+      {
+        "title": "SECTION III Anesthetic Management",
+        "startPage": 296,
+        "endPage": 959,
+        "file": "ch_05_section_iii_anesthetic_management.md"
+      },
+      {
+        "title": "SECTION IV Regional Anesthesia & Pain Management",
+        "startPage": 960,
+        "endPage": 1133,
+        "file": "ch_06_section_iv_regional_anesthesia_pain_management.md"
+      },
+      {
+        "title": "SECTION V Perioperative & Critical Care Medicine",
+        "startPage": 1134,
+        "endPage": 1362,
+        "file": "ch_07_section_v_perioperative_critical_care_medicine.md"
+      }
+    ]
+  },
+  {
+    "slug": "stoeltings_pharmacology_and_physiology_in_anesthetic_practice_5th_edit",
+    "title": "Stoelting's Pharmacology & Physiology",
+    "edition": "5th Ed.",
+    "tag": "Pharmacology",
+    "totalPages": 913,
+    "totalChapters": 10,
+    "chapters": [
+      {
+        "title": "Front Matter",
+        "startPage": 1,
+        "endPage": 1,
+        "file": "ch_01_front_matter.md"
+      },
+      {
+        "title": "Pharmacology and Physiology in Anesthetic Practice FIFTH EDITION",
+        "startPage": 2,
+        "endPage": 5,
+        "file": "ch_02_pharmacology_and_physiology_in_anesthetic_practice.md"
+      },
+      {
+        "title": "CONTRIBUTORS",
+        "startPage": 6,
+        "endPage": 7,
+        "file": "ch_03_contributors.md"
+      },
+      {
+        "title": "FOREWORD",
+        "startPage": 8,
+        "endPage": 9,
+        "file": "ch_04_foreword.md"
+      },
+      {
+        "title": "PREFACE TO THE FIFTH EDITION",
+        "startPage": 10,
+        "endPage": 11,
+        "file": "ch_05_preface_to_the_fifth_edition.md"
+      },
+      {
+        "title": "CONTENTS",
+        "startPage": 12,
+        "endPage": 13,
+        "file": "ch_06_contents.md"
+      },
+      {
+        "title": "PART I Basic Principles of Physiology and Pharmacology",
+        "startPage": 14,
+        "endPage": 57,
+        "file": "ch_07_part_i_basic_principles_of_physiology_and_pharmaco.md"
+      },
+      {
+        "title": "PART VIII Miscellaneous",
+        "startPage": 792,
+        "endPage": 857,
+        "file": "ch_14_part_viii_miscellaneous.md"
+      },
+      {
+        "title": "DRUG INDEX",
+        "startPage": 896,
+        "endPage": 899,
+        "file": "ch_16_drug_index.md"
+      },
+      {
+        "title": "SUBJECT INDEX",
+        "startPage": 900,
+        "endPage": 913,
+        "file": "ch_17_subject_index.md"
+      }
+    ]
+  }
+]

@@ -6,29 +6,29 @@
   default: true;
   prefersdark: false;
   color-scheme: light;
-  --color-base-100: #F2F4F7;
+  --color-base-100: #F4F7FA;
   --color-base-200: #FFFFFF;
-  --color-base-300: #E5E7EB;
-  --color-base-content: #111827;
-  --color-primary: #1A73E8;
+  --color-base-300: #E2E9F0;
+  --color-base-content: #0C1E35;
+  --color-primary: #0066CC;
   --color-primary-content: #FFFFFF;
-  --color-secondary: #6B7280;
+  --color-secondary: #64788F;
   --color-secondary-content: #FFFFFF;
-  --color-accent: #059669;
+  --color-accent: #0D8A72;
   --color-accent-content: #FFFFFF;
-  --color-neutral: #1F2937;
+  --color-neutral: #0A2540;
   --color-neutral-content: #FFFFFF;
-  --color-info: #0284C7;
+  --color-info: #0066CC;
   --color-info-content: #FFFFFF;
-  --color-success: #059669;
+  --color-success: #0D8A72;
   --color-success-content: #FFFFFF;
-  --color-warning: #D97706;
+  --color-warning: #B45309;
   --color-warning-content: #FFFFFF;
-  --color-error: #DC2626;
+  --color-error: #C81E1E;
   --color-error-content: #FFFFFF;
   --radius-selector: 9999px;
   --radius-field: 12px;
-  --radius-box: 20px;
+  --radius-box: 16px;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -41,29 +41,29 @@
   default: false;
   prefersdark: true;
   color-scheme: dark;
-  --color-base-100: #000000;
-  --color-base-200: #17171A;
-  --color-base-300: #27272A;
-  --color-base-content: #F9FAFB;
-  --color-primary: #3B82F6;
+  --color-base-100: #080E17;
+  --color-base-200: #111B29;
+  --color-base-300: #1E2E42;
+  --color-base-content: #F0F6FC;
+  --color-primary: #3898FF;
   --color-primary-content: #FFFFFF;
-  --color-secondary: #9CA3AF;
-  --color-secondary-content: #111827;
-  --color-accent: #10B981;
-  --color-accent-content: #052E16;
-  --color-neutral: #27272A;
-  --color-neutral-content: #F9FAFB;
+  --color-secondary: #8299B3;
+  --color-secondary-content: #080E17;
+  --color-accent: #2DD4BF;
+  --color-accent-content: #042F2E;
+  --color-neutral: #182638;
+  --color-neutral-content: #F0F6FC;
   --color-info: #38BDF8;
   --color-info-content: #082F49;
-  --color-success: #10B981;
-  --color-success-content: #052E16;
-  --color-warning: #F59E0B;
+  --color-success: #2DD4BF;
+  --color-success-content: #042F2E;
+  --color-warning: #FBBF24;
   --color-warning-content: #451A03;
-  --color-error: #F43F5E;
+  --color-error: #FB7185;
   --color-error-content: #FFFFFF;
   --radius-selector: 9999px;
   --radius-field: 12px;
-  --radius-box: 20px;
+  --radius-box: 16px;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -72,7 +72,7 @@
 }
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
@@ -84,15 +84,40 @@
   }
 }
 
+.medscape-hero {
+  background: linear-gradient(155deg, #0A2540 0%, #123B66 100%);
+  color: #FFFFFF;
+}
+
+[data-theme="or-dark"] .medscape-hero {
+  background: linear-gradient(155deg, #0D1B2E 0%, #142B47 100%);
+  color: #F0F6FC;
+}
+
+.medscape-card,
 .oneui-card {
-  border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(17, 24, 39, 0.04);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(10, 37, 64, 0.05), 0 4px 12px rgba(10, 37, 64, 0.04);
+}
+
+[data-theme="or-dark"] .medscape-card,
+[data-theme="or-dark"] .oneui-card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
 }
 
 .oneui-pill-shadow {
-  box-shadow: 0 6px 18px rgba(26, 115, 232, 0.24);
+  box-shadow: 0 6px 18px rgba(0, 102, 204, 0.24);
 }
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

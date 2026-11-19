@@ -1,4 +1,15 @@
-import { AlertTriangle, Check, CheckCircle2, Copy, Pencil, RotateCcw, Trash2, X } from 'lucide-react'
+import {
+  AlertTriangle,
+  Check,
+  CheckCircle2,
+  Copy,
+  Pencil,
+  RotateCcw,
+  ShieldCheck,
+  Sparkles,
+  Trash2,
+  X,
+} from 'lucide-react'
 import { useState } from 'react'
 import { formatDateFull } from '../lib/date'
 import { formatComorbiditiesText, formatPatientForEMR } from '../lib/storage'
@@ -9,6 +20,7 @@ interface PatientReadModalProps {
   hospitalName: string
   onClose: () => void
   onEdit: () => void
+  onConsult: () => void
   onToggleEmrStatus: () => void
   onDelete: () => void
 }
@@ -18,6 +30,7 @@ export function PatientReadModal({
   hospitalName,
   onClose,
   onEdit,
+  onConsult,
   onToggleEmrStatus,
   onDelete,
 }: PatientReadModalProps) {
@@ -40,29 +53,29 @@ export function PatientReadModal({
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-base-100">
-      {/* Header */}
-      <header className="flex shrink-0 items-center justify-between border-b border-base-300 bg-base-200 px-4 py-3">
+      {/* Clinical Navy Header */}
+      <header className="medscape-hero flex shrink-0 items-center justify-between px-4 py-3.5 shadow-sm">
         <div className="min-w-0 flex-1 pr-2">
-          <span className="text-[10px] font-bold tracking-wider text-primary uppercase">
-            Mode Baca EMR • {hospitalName}
+          <span className="text-[10px] font-bold tracking-wider text-sky-200 uppercase">
+            Mode Baca EMR · {hospitalName}
           </span>
-          <h2 className="truncate text-base font-bold text-base-content">{patient.fullName}</h2>
+          <h2 className="truncate text-base font-bold text-white">{patient.fullName}</h2>
         </div>
         <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={handleCopy}
-            className="btn btn-sm h-9 rounded-full border-0 bg-base-100 px-3 text-xs font-bold"
+            className="flex h-9 items-center gap-1.5 rounded-full bg-white/12 px-3 text-xs font-bold text-white transition hover:bg-white/20"
             title="Salin format teks EMR"
           >
-            {copied ? <Check className="h-4 w-4 text-success" /> : <Copy className="h-4 w-4" />}
+            {copied ? <Check className="h-4 w-4 text-teal-300" /> : <Copy className="h-4 w-4" />}
             <span className="hidden sm:inline">{copied ? 'Tersalin' : 'Salin'}</span>
           </button>
           <button
             type="button"
             onClick={onEdit}
             aria-label="Edit pasien"
-            className="btn btn-sm h-9 w-9 rounded-full border-0 bg-base-100 p-0"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/12 text-white transition hover:bg-white/20"
           >
             <Pencil className="h-4 w-4" />
           </button>
@@ -70,7 +83,7 @@ export function PatientReadModal({
             type="button"
             onClick={onClose}
             aria-label="Tutup"
-            className="btn btn-sm h-9 w-9 rounded-full border-0 bg-base-100 p-0"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-white/12 text-white transition hover:bg-white/20"
           >
             <X className="h-5 w-5" />
           </button>
@@ -78,12 +91,28 @@ export function PatientReadModal({
       </header>
 
       {/* High-Contrast Scannable EMR Read View */}
-      <main className="flex-1 overflow-y-auto px-4 py-4 pb-32">
+      <main className="flex-1 overflow-y-auto px-4 py-4 pb-36">
         <div className="mx-auto flex max-w-lg flex-col gap-3">
+          {/* Direct 3-Tier Consult AI CTA */}
+          <div className="medscape-card space-y-2 border border-primary/25 bg-base-200 p-3.5">
+            <button
+              type="button"
+              onClick={onConsult}
+              className="btn btn-primary h-11 w-full rounded-xl border-0 text-xs font-bold oneui-pill-shadow"
+            >
+              <Sparkles className="h-4 w-4" />
+              Bedah Kasus — Consult AI (3-Tier)
+            </button>
+            <div className="flex items-center justify-center gap-1.5 text-[11px] text-secondary">
+              <ShieldCheck className="h-3.5 w-3.5 text-success" />
+              <span>Auto De-Identifikasi: Nama &amp; No. RM otomatis dihapus sebelum dikirim</span>
+            </div>
+          </div>
+
           {/* Status Pill Banner */}
           <div
-            className={`flex items-center justify-between rounded-2xl px-4 py-2.5 text-xs font-bold ${
-              isDone ? 'bg-success/12 text-success' : 'bg-error/12 text-error'
+            className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-xs font-bold ${
+              isDone ? 'bg-success/12 text-success' : 'bg-warning/15 text-warning'
             }`}
           >
             <span>{isDone ? 'Sudah Masuk EMR' : 'Belum Input EMR'}</span>
@@ -92,7 +121,7 @@ export function PatientReadModal({
 
           {/* Allergy Red Flag */}
           {patient.hasAllergy && (
-            <div className="oneui-card flex items-start gap-2.5 border border-error/40 bg-error/10 p-3.5 text-error">
+            <div className="medscape-card flex items-start gap-2.5 border border-error/40 bg-error/10 p-3.5 text-error">
               <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
               <div>
                 <div className="text-[11px] font-bold uppercase">Peringatan Alergi</div>
@@ -104,7 +133,7 @@ export function PatientReadModal({
           )}
 
           {/* Blok 1: Identitas */}
-          <section className="oneui-card border border-base-300/60 bg-base-200 p-4">
+          <section className="medscape-card border border-base-300 bg-base-200 p-4">
             <div className="text-[11px] font-bold tracking-wide text-primary uppercase">
               Identitas Pasien
             </div>
@@ -132,22 +161,22 @@ export function PatientReadModal({
           </section>
 
           {/* Blok 2: Tindakan & Rencana Anestesi */}
-          <section className="oneui-card border border-base-300/60 bg-base-200 p-4">
+          <section className="medscape-card border border-base-300 bg-base-200 p-4">
             <div className="text-[11px] font-bold tracking-wide text-primary uppercase">
-              Diagnosis & Rencana Anestesi
+              Diagnosis &amp; Rencana Anestesi
             </div>
             <div className="mt-1.5 text-base font-semibold text-base-content">
               {patient.diagnosisProcedure || '-'}
             </div>
-            <div className="mt-2.5 inline-block rounded-full bg-primary/10 px-3 py-1 font-mono text-xs font-bold text-primary">
+            <div className="mt-2.5 inline-block rounded-lg bg-primary/10 px-3 py-1 font-mono text-xs font-bold text-primary">
               Teknik: {patient.anesthesiaPlan}
             </div>
           </section>
 
           {/* Blok 3: Anamnesis & Riwayat */}
-          <section className="oneui-card border border-base-300/60 bg-base-200 p-4">
+          <section className="medscape-card border border-base-300 bg-base-200 p-4">
             <div className="text-[11px] font-bold tracking-wide text-primary uppercase">
-              Anamnesis & Riwayat Penyakit
+              Anamnesis &amp; Riwayat Penyakit
             </div>
             <dl className="mt-2.5 flex flex-col gap-2.5 text-sm">
               <div>
@@ -170,12 +199,12 @@ export function PatientReadModal({
           </section>
 
           {/* Blok 4: Pre-Op ASA */}
-          <section className="oneui-card border border-base-300/60 bg-base-200 p-4">
+          <section className="medscape-card border border-base-300 bg-base-200 p-4">
             <div className="text-[11px] font-bold tracking-wide text-primary uppercase">
               Penilaian Pre-Op ASA
             </div>
             <div className="mt-2.5 grid grid-cols-3 gap-2 font-mono">
-              <div className="rounded-2xl bg-base-100 p-2.5 text-center">
+              <div className="rounded-xl bg-base-100 p-2.5 text-center">
                 <div className="text-[10px] text-secondary uppercase">ASA</div>
                 <div
                   className={`text-lg font-bold ${
@@ -186,11 +215,11 @@ export function PatientReadModal({
                   {patient.isEmergency ? 'E' : ''}
                 </div>
               </div>
-              <div className="rounded-2xl bg-base-100 p-2.5 text-center">
+              <div className="rounded-xl bg-base-100 p-2.5 text-center">
                 <div className="text-[10px] text-secondary uppercase">Mallampati</div>
                 <div className="text-lg font-bold">{patient.mallampati}</div>
               </div>
-              <div className="rounded-2xl bg-base-100 p-2.5 text-center">
+              <div className="rounded-xl bg-base-100 p-2.5 text-center">
                 <div className="text-[10px] text-secondary uppercase">Puasa</div>
                 <div className="truncate text-sm font-bold">{patient.npoHours || '-'}</div>
               </div>
@@ -213,26 +242,26 @@ export function PatientReadModal({
               <button
                 type="button"
                 onClick={() => setConfirmDelete(true)}
-                className="btn btn-sm btn-ghost w-full rounded-full text-xs font-semibold text-error"
+                className="btn btn-sm btn-ghost w-full rounded-xl text-xs font-semibold text-error"
               >
                 <Trash2 className="h-3.5 w-3.5" />
                 Hapus Data Pasien Ini
               </button>
             ) : (
-              <div className="flex items-center justify-between gap-2 rounded-2xl bg-error/10 p-3">
+              <div className="flex items-center justify-between gap-2 rounded-xl bg-error/10 p-3">
                 <span className="text-xs font-bold text-error">Yakin hapus pasien ini?</span>
                 <div className="flex gap-1.5">
                   <button
                     type="button"
                     onClick={() => setConfirmDelete(false)}
-                    className="btn btn-xs h-8 rounded-full border-0 bg-base-200 px-3"
+                    className="btn btn-xs h-8 rounded-lg border-0 bg-base-200 px-3"
                   >
                     Batal
                   </button>
                   <button
                     type="button"
                     onClick={onDelete}
-                    className="btn btn-xs btn-error h-8 rounded-full px-3 text-error-content"
+                    className="btn btn-xs btn-error h-8 rounded-lg px-3 text-error-content"
                   >
                     Ya, Hapus
                   </button>
@@ -249,7 +278,7 @@ export function PatientReadModal({
           <button
             type="button"
             onClick={onToggleEmrStatus}
-            className={`btn h-12 w-full rounded-full border-0 text-sm font-bold ${
+            className={`btn h-11 w-full rounded-xl border-0 text-sm font-bold ${
               isDone
                 ? 'bg-base-300 text-base-content'
                 : 'btn-success text-success-content shadow-md'
