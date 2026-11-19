@@ -1446,9 +1446,10 @@ async function handleConsult(req: Request): Promise<Response> {
   }
 
   const geminiApiKey = (process.env.GEMINI_API_KEY || '').trim()
-  if (!geminiApiKey) {
+  const groqKey = (process.env.GROQ_API_KEY || '').trim()
+  if (!geminiApiKey && !groqKey) {
     return jsonResponse(
-      { error: 'GEMINI_API_KEY belum diatur di Netlify Environment Variables.' },
+      { error: 'GEMINI_API_KEY atau GROQ_API_KEY belum diatur di Environment Variables.' },
       500
     )
   }
@@ -1538,62 +1539,11 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
   ].join('\n')
 
   try {
-    const candidateModels = process.env.GEMINI_MODEL
-      ? [process.env.GEMINI_MODEL]
-      : ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-flash-lite-latest', 'gemini-2.5-flash-lite']
-
-    const callGemini = async (modelName: string, withSearch: boolean) => {
-      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
-      return fetch(geminiUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          systemInstruction: { parts: [{ text: systemInstruction }] },
-          contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-          ...(withSearch ? { tools: [{ googleSearch: {} }] } : {}),
-          generationConfig: {
-            temperature: 0.2,
-            maxOutputTokens: 2400,
-          },
-        }),
-        signal: AbortSignal.timeout(22000),
-      })
-    }
-
-    let gRes: Response | null = null
-    for (const modelName of candidateModels) {
-      gRes = await callGemini(modelName, true)
-      if (gRes.status === 400 || gRes.status === 429) {
-        gRes = await callGemini(modelName, false)
-      }
-      if (gRes.ok) break
-      if (gRes.status !== 404 && gRes.status !== 429) break
-    }
-
     let rawText = ''
     let groundingRefs: string[] = []
 
-    if (gRes && gRes.ok) {
-      const gData = (await gRes.json()) as {
-        candidates?: Array<{
-          content?: { parts?: Array<{ text?: string }> }
-          groundingMetadata?: {
-            groundingChunks?: Array<{ web?: { title?: string; uri?: string } }>
-          }
-        }>
-      }
-      rawText =
-        gData.candidates?.[0]?.content?.parts
-          ?.map((p) => p.text || '')
-          .join('')
-          .trim() || ''
-      const groundingChunks = gData.candidates?.[0]?.groundingMetadata?.groundingChunks ?? []
-      groundingRefs = groundingChunks
-        .filter((c) => c.web?.uri)
-        .slice(0, 4)
-        .map((c) => `[Guideline/Web: ${c.web?.title || 'Sumber Web'}, ${c.web?.uri}]`)
-    } else if ((process.env.GROQ_API_KEY || '').trim()) {
-      const groqKey = (process.env.GROQ_API_KEY || '').trim()
+    const tryGroq = async (): Promise<string | null> => {
+      if (!groqKey) return null
       const groqRes = await fetch('https://api.groq.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: {
@@ -1611,17 +1561,76 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
         }),
         signal: AbortSignal.timeout(20000),
       })
-      if (!groqRes.ok) {
-        const gErr = await groqRes.text()
-        return jsonResponse({ error: `Groq fallback error (${groqRes.status}): ${gErr.slice(0, 220)}` }, 502)
-      }
+      if (!groqRes.ok) return null
       const groqData = (await groqRes.json()) as {
         choices?: Array<{ message?: { content?: string } }>
       }
-      rawText = groqData.choices?.[0]?.message?.content?.trim() || ''
+      return groqData.choices?.[0]?.message?.content?.trim() || null
+    }
+
+    // 1. Fast path: Groq (14,400 req/day free, <2s latency)
+    const groqText = await tryGroq()
+    if (groqText) {
+      rawText = groqText
+    } else if (geminiApiKey) {
+      // 2. Fallback: Gemini models
+      const candidateModels = process.env.GEMINI_MODEL
+        ? [process.env.GEMINI_MODEL]
+        : ['gemini-3.8-flash', 'gemini-flash-latest', 'gemini-flash-lite-latest', 'gemini-2.5-flash-lite']
+
+      const callGemini = async (modelName: string, withSearch: boolean) => {
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+        return fetch(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            systemInstruction: { parts: [{ text: systemInstruction }] },
+            contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
+            ...(withSearch ? { tools: [{ googleSearch: {} }] } : {}),
+            generationConfig: {
+              temperature: 0.2,
+              maxOutputTokens: 2400,
+            },
+          }),
+          signal: AbortSignal.timeout(22000),
+        })
+      }
+
+      let gRes: Response | null = null
+      for (const modelName of candidateModels) {
+        gRes = await callGemini(modelName, true)
+        if (gRes.status === 400 || gRes.status === 429) {
+          gRes = await callGemini(modelName, false)
+        }
+        if (gRes.ok) break
+        if (gRes.status !== 404 && gRes.status !== 429) break
+      }
+
+      if (gRes && gRes.ok) {
+        const gData = (await gRes.json()) as {
+          candidates?: Array<{
+            content?: { parts?: Array<{ text?: string }> }
+            groundingMetadata?: {
+              groundingChunks?: Array<{ web?: { title?: string; uri?: string } }>
+            }
+          }>
+        }
+        rawText =
+          gData.candidates?.[0]?.content?.parts
+            ?.map((p) => p.text || '')
+            .join('')
+            .trim() || ''
+        const groundingChunks = gData.candidates?.[0]?.groundingMetadata?.groundingChunks ?? []
+        groundingRefs = groundingChunks
+          .filter((c) => c.web?.uri)
+          .slice(0, 4)
+          .map((c) => `[Guideline/Web: ${c.web?.title || 'Sumber Web'}, ${c.web?.uri}]`)
+      } else {
+        const errText = gRes ? await gRes.text() : 'No response'
+        return jsonResponse({ error: `Gemini API error (${gRes?.status ?? 502}): ${errText.slice(0, 240)}` }, 502)
+      }
     } else {
-      const errText = gRes ? await gRes.text() : 'No response'
-      return jsonResponse({ error: `Gemini API error (${gRes?.status ?? 502}): ${errText.slice(0, 240)}` }, 502)
+      return jsonResponse({ error: 'Groq gagal merespons dan GEMINI_API_KEY tidak tersedia.' }, 502)
     }
 
     // Extract JSON safely even if wrapped in code fences
