@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  base: '/aneslog-bogor/',
+  base: process.env.GITHUB_ACTIONS ? '/aneslog-bogor/' : '/',
   preview: {
     allowedHosts: true,
   },
@@ -15,11 +15,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'icon-192.png', 'icon-512.png'],
       manifest: {
-        name: 'AnesLog — Pre-Op & EMR Tracker',
+        name: 'AnesLog — Perioperative & 3-Tier Reference',
         short_name: 'AnesLog',
-        description: 'Pencatat pasien pre-op anestesi & pelacak input EMR offline-ready.',
-        theme_color: '#F6F5F0',
-        background_color: '#12151A',
+        description: 'Pencatat pasien pre-op anestesi, EMR tracker, & Consult AI 3-Tier.',
+        theme_color: '#0A2540',
+        background_color: '#F4F7FA',
         display: 'standalone',
         orientation: 'portrait',
         icons: [

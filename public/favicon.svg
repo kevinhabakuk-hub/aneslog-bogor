@@ -1,5 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="4" fill="#0E1012"/>
-  <rect x="6" y="6" width="52" height="52" rx="2" stroke="#F6F5F0" stroke-width="2"/>
-  <path d="M14 36H22L26 20L33 44L38 28L42 36H50" stroke="#00B341" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="porcelainBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E8EFF7"/>
+    </linearGradient>
+  </defs>
+  <!-- Full-bleed Porcelain Background for One UI Maskable Squircle -->
+  <rect width="512" height="512" fill="url(#porcelainBg)"/>
+  <!-- Bold Clinical Navy Medical Cross (Safe-Zone Centered) -->
+  <rect x="210" y="106" width="92" height="300" rx="28" fill="#0A2540"/>
+  <rect x="106" y="210" width="300" height="92" rx="28" fill="#0A2540"/>
+  <!-- Precision Vital Pulse Line -->
+  <path d="M138 256 H204 L228 202 L262 308 L292 236 L312 256 H374"
+        fill="none" stroke="#FFFFFF" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Surgical Teal Accent Dot -->
+  <circle cx="356" cy="156" r="24" fill="#0D8A72"/>
 </svg>
