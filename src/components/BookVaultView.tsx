@@ -1,29 +1,12 @@
 import { BookOpen, ChevronDown, ChevronRight, Search, Sparkles } from 'lucide-react'
 import { useMemo, useState } from 'react'
-import booksCatalogData from '../data/booksCatalog.json'
-
-interface BookChapter {
-  title: string
-  startPage: number
-  endPage: number
-  file: string
-}
-
-interface BookEntry {
-  slug: string
-  title: string
-  edition: string
-  tag: string
-  totalPages: number
-  totalChapters: number
-  chapters: BookChapter[]
-}
+import { BOOKS_CATALOG } from '../data/booksCatalog'
 
 interface BookVaultViewProps {
   onConsultBookTopic: (bookSlug: string, bookTitle: string, prompt: string) => void
 }
 
-const BOOKS = booksCatalogData as BookEntry[]
+const BOOKS = BOOKS_CATALOG
 
 export function BookVaultView({ onConsultBookTopic }: BookVaultViewProps) {
   const [search, setSearch] = useState('')

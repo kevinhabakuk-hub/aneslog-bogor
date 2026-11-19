@@ -1,21 +1,4 @@
-import booksCatalog from '../../src/data/booksCatalog.json'
-
-interface BookChapter {
-  title: string
-  startPage: number
-  endPage: number
-  file: string
-}
-
-interface BookEntry {
-  slug: string
-  title: string
-  edition: string
-  tag: string
-  totalPages: number
-  totalChapters: number
-  chapters: BookChapter[]
-}
+import { BOOKS_CATALOG, type BookChapter, type BookEntry } from '../../src/data/booksCatalog'
 
 interface AnonymizedPatientContext {
   age?: string
@@ -56,7 +39,7 @@ interface Tier2Article {
   year: string
 }
 
-const CATALOG = booksCatalog as BookEntry[]
+const CATALOG = BOOKS_CATALOG
 
 const DOMAIN_HINTS: Array<{ keywords: RegExp; bookHint: string }> = [
   { keywords: /\b(obstetri|sectio|caesarea|sc|preeklam|peb|eklam|partus|hamil|maternal|uterotoni|oxytocin|mgso4|spinal ob)\b/i, bookHint: 'chestnut' },
@@ -390,15 +373,18 @@ KELUARKAN OUTPUT HANYA DALAM FORMAT JSON VALID (tanpa markdown fence \`\`\`json)
 
   try {
     const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash'
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+    const isVertexExpressKey = geminiApiKey.startsWith('AQ.')
+    const geminiUrl = isVertexExpressKey
+      ? `https://aiplatform.googleapis.com/v1/publishers/google/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
+      : `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiApiKey)}`
 
     const gRes = await fetch(geminiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        system_instruction: { parts: [{ text: systemInstruction }] },
+        systemInstruction: { parts: [{ text: systemInstruction }] },
         contents: [{ role: 'user', parts: [{ text: userPrompt }] }],
-        tools: [{ google_search: {} }],
+        tools: [{ googleSearch: {} }],
         generationConfig: {
           temperature: 0.2,
           maxOutputTokens: 2400,
